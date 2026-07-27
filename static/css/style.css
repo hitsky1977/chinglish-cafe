@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Chinglish.Cafe 全局核心样式 (style.css)
+   ========================================================================== */
+
+/* 1. 基础排版与字体 */
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #ffffff; 
+}
+.chinglish-font { 
+    font-family: 'Georgia', serif; 
+    font-style: italic; 
+}
+.inglish-style { 
+    font-family: 'Georgia', serif; 
+    font-style: italic; 
+    font-weight: normal; 
+}
+
+/* 2. 品牌色彩 */
+.color-cn-red { color: #DE2910; } 
+.color-coffee { color: #5C4033; } 
+/* 确保 Logo 内部的单词间距紧凑自然 */
+.navbar-item, .hero-body h1 {
+    word-spacing: -0.15em; /* 稍微收紧单词间的默认间距 */
+}
+/* ==========================================================================
+   剪纸点缀图标样式（区分首页大标题与子页导航栏）
+   ========================================================================== */
+
+/* 1. 首页大标题专用的剪纸图标（字号极大，用比例缩放正合适） */
+.logo-icon-dot-home {
+    height: 0.65em; 
+    width: auto;
+    vertical-align: middle; 
+    margin: 0 8px; 
+    position: relative;
+    top: -4px; 
+    display: inline-block;
+}
+
+/* 2. 详情页/列表页导航栏专用的剪纸图标（字号较小，做精细化控制） */
+.logo-icon-dot-nav {
+    height: 18px; /* 直接写死一个精致的小像素高度，在小标题里雷打不动 */
+    width: auto;
+    vertical-align: middle; 
+    margin: 0; 
+    position: relative;
+    top: -2px; 
+    display: inline-block;
+}
+.hero-pattern { 
+    background-color: #ffffff; 
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235c4033' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E"); 
+}
+
+/* 4. 页面布局与卡片 */
+.section-padding { padding: 3rem 1.5rem; }
+.category-header { border-bottom: 2px solid #eaeaea; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+.card { height: 100%; display: flex; flex-direction: column; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.card-content { flex-grow: 1; }
+
+/* 5. 详情页专属样式 (single.html) */
+.definition-box { background-color: #fdfaf6; border-left: 4px solid #DE2910; border-radius: 0 8px 8px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.sidebar-widget { border: 1px solid #eaeaea; border-radius: 8px; padding: 1.5rem; background-color: #fafafa; }
+.sidebar-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 1rem; font-weight: bold; border-bottom: 1px solid #eaeaea; padding-bottom: 0.5rem; }
+.sticky-sidebar { position: -webkit-sticky; position: sticky; top: 2rem; z-index: 10; }
+.content h2 { color: #5C4033; font-weight: 700; font-size: 1.5rem; margin-top: 2rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; }
+.content p { font-size: 1.1rem; line-height: 1.8; color: #333333; }
+
+/* 6. 页脚区域 */
+.custom-footer { background-color: #fcfcfc; border-top: 1px solid #f0f0f0; padding: 2rem 1.5rem; margin-top: 4rem; }
+.footer-links a { transition: color 0.2s; }
+.footer-links a:hover { color: #5C4033 !important; }

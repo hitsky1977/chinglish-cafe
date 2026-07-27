@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 Page Not Found | {{ .Site.Title }}</title>
+    
+    <link rel="stylesheet" href="/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff; 
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .inglish-style {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+        .color-cn-red { color: #DE2910; } 
+        .color-coffee { color: #5C4033; } 
+        
+        .custom-footer {
+            background-color: #fcfcfc; 
+            border-top: 1px solid #f0f0f0;
+            padding: 2rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
+                    <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span><span class="color-cn-red">.</span><span class="color-coffee">Cafe</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 404 核心内容 -->
+    <section class="section main-content text-center">
+        <div class="container has-text-centered">
+            <h1 class="title color-cn-red" style="font-size: 8rem; font-weight: 800; margin-bottom: 0;">404</h1>
+            <h2 class="title is-2 color-coffee mt-2 mb-5">Page Not Found</h2>
+            
+            <p class="is-size-5 has-text-grey mb-6">
+                Oops! It seems this page has gone to <strong>people mountain people sea</strong>.<br>
+                (It's completely lost in the crowd).
+            </p>
+            
+            <a href="/" class="button is-dark is-rounded is-medium">
+                &larr; Take Me Home
+            </a>
+        </div>
+    </section>
+
+    <!-- 底部 Footer -->
+    <footer class="custom-footer">
+        <div class="container has-text-centered">
+            <p class="mt-2 has-text-grey-light is-size-7">
+                &copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with Hugo & Bulma.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

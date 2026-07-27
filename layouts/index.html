@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ {{ partial "head.html" . }}
+</head>
+<body>
+
+    <!-- 🌟 顶部 Header：加入了 hero-pattern 背景 -->
+    <section class="hero is-small hero-pattern">
+        <div class="hero-body has-text-centered py-6">
+            <h1 class="title is-size-1 has-text-weight-bold">
+          
+               <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span><img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-home"><span class="color-coffee">Cafe</span>
+            </h1>
+            <p class="subtitle is-size-5 mt-3 has-text-grey mx-auto" style="max-width: 780px; line-height: 1.6;">
+                {{ .Site.Params.description }}
+            </p>
+			<div class="has-text-centered my-4">
+    <span class="tag is-medium is-light">
+        📚 Archived Chinglish Phrases:&nbsp;<strong>{{ len (where .Site.RegularPages "Section" "posts") }}</strong>
+    </span>
+</div>
+        </div>
+    </section>
+
+<!-- 第一区块：图文组合推荐词条 -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="columns is-multiline">
+                
+                <!-- 🌟 核心修改 1：只筛选 featured 属性为 true 的文章 -->
+                {{ $featured := where .Site.RegularPages "Params.featured" true }}
+                
+                {{ range first 4 $featured }}
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="card">
+                        {{ $img := .Params.thumbnail | default .Params.image | default "/images/default-cover.webp" }}
+                        <div class="card-image mb-4">
+                            <figure class="image is-16by9">
+                                <img src="{{ $img }}" alt="{{ .Title }}" style="object-fit: cover; border-radius: 8px;">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-4 chinglish-font">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                            <p class="mt-2" style="line-height: 1.4;">
+                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                
+            </div>
+        </div>
+    </section>
+
+<!-- 第二区块：按类别垂直罗列 (动态智能生成版) -->
+    <section class="section section-padding pt-0">
+        <div class="container">
+            
+            <!-- 🌟 核心修改 1：先过滤掉推荐(featured)的文章，只保留普通文章 -->
+            {{ $normalPages := where .Site.RegularPages "Params.featured" "!=" true }}
+            
+            <!-- 🌟 核心修改 2：用过滤后的 $normalPages 代替原来的 .Site.RegularPages 进行分组 -->
+            {{ range $normalPages.GroupByParam "category" }}
+            
+            <!-- 动态输出类别名称，例如: # Idioms & Slang -->
+            <div class="category-block mb-6">
+               <h2 class="title is-4 has-text-grey-dark category-header">
+                    <a href="{{ printf "/%s/" (.Key | urlize) }}" class="has-text-grey-dark">
+                        # {{ .Key }} <span class="is-size-6 has-text-weight-normal has-text-grey">(&rarr; View All)</span>
+                    </a>
+                </h2>
+                <div class="columns is-multiline">
+                    
+                    <!-- 循环输出该类别下的所有词条 (这里的 .Pages 已经自动排除了 featured 的文章) -->
+                    {{ range .Pages }}
+                    <div class="column is-one-third-desktop is-half-tablet">
+                        <div class="box h-100">
+                            <p class="title is-5 chinglish-font">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                            <p class="mt-2" style="line-height: 1.4;">
+                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    {{ end }}
+                    
+                </div>
+            </div>
+            
+            {{ end }}
+
+        </div>
+    </section>
+<!-- 🌟 自定义样式：建议将这段 style 放在 HTML 的 <head> 里，或者直接放在这个区块上方 -->
+<style>
+    .feature-card {
+        transition: all 0.3s ease; /* 增加平滑过渡 */
+        border-radius: 12px;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* 让内容靠上，按钮靠下 */
+        height: 100%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .feature-card:hover {
+        transform: translateY(-6px); /* 鼠标悬浮时卡片会上浮 */
+        box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    .icon-wrapper {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2rem;
+        background: rgba(255, 255, 255, 0.6); /* 半透明白色背景底座 */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+    .feature-desc {
+        line-height: 1.6;
+        min-height: 4.8em; /* 强制文本区域至少占据 3 行的高度 (1.6 * 3 = 4.8) */
+        margin-bottom: 2rem;
+    }
+</style>
+
+<!-- 🌟 新增的外层包裹：限制宽度并与上方主体对齐 -->
+<section class="section section-padding pt-0">
+    <div class="container">
+
+        <!-- 🌟 核心 HTML 结构 (原封不动) -->
+        <div class="columns is-multiline mb-6">
+            
+            <!-- 模块 1: Oxford Certified (黄色系) -->
+            <div class="column is-one-third-desktop is-full-tablet">
+                <div class="box feature-card has-background-warning-light has-text-centered p-5">
+                    <div>
+                        <div class="icon-wrapper">📖</div>
+                        <h3 class="title is-4 has-text-grey-dark">Oxford Certified</h3>
+                        <p class="has-text-grey feature-desc is-size-6">
+                            Explore legendary Chinglish phrases that have officially crossed cultural borders. These linguistic marvels are now proudly recognized in prestigious English dictionaries.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="/oxford/" class="button is-warning is-outlined is-rounded is-fullwidth has-text-weight-semibold" style="border-width: 2px;">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块 2: Urban Dictionary (蓝色系) -->
+            <div class="column is-one-third-desktop is-full-tablet">
+                <div class="box feature-card has-background-info-light has-text-centered p-5">
+                    <div>
+                        <div class="icon-wrapper">💬</div>
+                        <h3 class="title is-4 has-text-grey-dark">Urban Dictionary</h3>
+                        <p class="has-text-grey feature-desc is-size-6">
+                            Dive into the untamed world of Chinese internet slang. Discover the most creative, chaotic, and viral expressions currently dominating daily digital conversations.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="/urbandict/" class="button is-info is-outlined is-rounded is-fullwidth has-text-weight-semibold" style="border-width: 2px;">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块 3: 5-Star Hilarious (青色/主色系) -->
+            <div class="column is-one-third-desktop is-full-tablet">
+                <div class="box feature-card has-background-primary-light has-text-centered p-5">
+                    <div>
+                        <div class="icon-wrapper">😂</div>
+                        <h3 class="title is-4 has-text-grey-dark">5-Star Hilarious</h3>
+                        <p class="has-text-grey feature-desc is-size-6">
+                            Prepare yourself for non-stop laughter. We've handpicked the absolute funniest, most bizarre, and mind-bending translation fails that achieved legendary comedy status.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="/hilarious/" class="button is-primary is-outlined is-rounded is-fullwidth has-text-weight-semibold" style="border-width: 2px;">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- columns 结束 -->
+
+    </div>
+</section>
+
+   <!-- 第四区块：独立的 About 介绍 (卡片风格) -->
+<section class="section section-padding pt-6 pb-6" style="background-color: #faf9f6;">
+    <div class="container has-text-centered">
+        <!-- 使用类似 Bulma 的 box 类或手写卡片样式 -->
+        <div class="box mx-auto px-6 py-6" style="max-width: 1080px; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border-top: 4px solid #c8a97e;">
+            <h4 class="title is-4 has-text-grey-dark mb-4" style="letter-spacing: 1px;">
+                <span style="font-size: 1.2em; vertical-align: middle; margin-right: 8px;">☕</span>About Chinglish.Cafe
+            </h4>
+            <p class="has-text-grey is-size-5 mx-auto mt-4" style="line-height: 1.8; font-weight: 300;">
+                <strong class="has-text-grey-dark">Chinglish is not just "bad English"</strong>—it's a fascinating cultural bridge. 
+                This site is dedicated to archiving literal translations, internet slang, and historical pidgin phrases 
+                that showcase the humor and creativity of the Chinese language meeting the English world.
+            </p>
+        </div>
+    </div>
+</section>
+
+  {{ partial "footer.html" . }}
+</body>
+</html>

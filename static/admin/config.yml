@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: hitsky1977/chinglish-cafe  # 必须填你的 GitHub 仓库地址，例如 hitsk/chinglish-cafe
+  branch: main
+
+media_folder: "static/images"
+public_folder: "/images"
+media_library:
+  name: uploadcare
+
+collections:
+  - name: "posts"
+    label: "词条库"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    # 增加一个分类字段，并限制为下拉菜单
+    fields:
+      - {label: "自定义URL路径 (Slug)", name: "slug", widget: "string", required: false, hint: "如不填，将自动根据标题生成"}
+      # ==========================================
+      # 模块 1 & 4：核心信息与分类元数据 (Core Info & Taxonomy)
+      # ==========================================
+      - {label: "词条标题 (Title)", name: "title", widget: "string"}
+      - {label: "发布日期 (Date)", name: "date", widget: "datetime"}
+      - {label: "词条分类 (Category)", name: "category", widget: "select", options: ["Daily Life", "Workplace", "Internet Slang", "Other"]}
+      - {label: "标签 (Tags)", name: "tags", widget: "list", default: ["Chinglish"]}
+      - {label: "封面配图 (Cover Image)", name: "image", widget: "image", required: false}
+
+      # ==========================================
+      # 模块 2：知识与解析 (Knowledge Base)
+      # ==========================================
+      - {label: "中式英语 (Chinglish Phrase)", name: "chinglish_phrase", widget: "string"}
+      - {label: "中文释义 (Chinese Meaning)", name: "chinese_meaning", widget: "string"}
+      - {label: "地道表达 (Native Expression)", name: "native_expression", widget: "string"}
+      - {label: "官方词典已收录 (Oxford/Urban Dict Added?)", name: "is_dictionary_added", widget: "boolean", default: false, required: false}
+
+      # ==========================================
+      # 模块 3：趣味与语境 (Fun & Context)
+      # ==========================================
+      - {label: "搞笑指数 (Humor Index 1-5)", name: "humor_index", widget: "number", min: 1, max: 5, default: 3, required: false}
+      - {label: "情景例句 (Example Sentence)", name: "example_sentence", widget: "text", required: false}
+      
+      # ==========================================
+      # 深度内容 (对应你截图中的“解释与备注”)
+      # ==========================================
+      - {label: "正文解析与溯源 (Body & Origin Story)", name: "body", widget: "markdown"}

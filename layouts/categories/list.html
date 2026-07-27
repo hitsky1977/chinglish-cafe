@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+    <!-- 🌟 补全的顶部导航栏 -->
+    <nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
+                    <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span>
+                    <img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav">
+                    <span class="color-coffee">Cafe</span>
+                </a>
+            </div>
+            <div class="navbar-menu is-active" style="box-shadow: none;">
+                <div class="navbar-end">
+                    <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">
+                        &larr; Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- 🌟 顶部 Header -->
+    <section class="hero is-small hero-pattern" style="background-color: #faf9f6;">
+        <div class="hero-body has-text-centered py-6">
+            <h1 class="title is-size-1 has-text-weight-bold has-text-grey-dark">
+                # {{ .Title }}
+            </h1>
+            
+            <!-- 🌟 动态专属文案渲染区域 -->
+            <!-- 将原本的 <p> 改为 <div>，防止渲染 Markdown 正文时出现 HTML 标签嵌套错误 -->
+           <!-- 🌟 动态专属文案渲染区域 -->
+            <div class="subtitle is-size-5 mt-3 has-text-grey mx-auto content" style="max-width: 720px; line-height: 1.6;">
+                {{ if .Params.intro_text }}
+                    <!-- 优先调用专门为前端准备的 intro_text -->
+                    <p>{{ .Params.intro_text }}</p>
+                {{ else if .Content }}
+                    {{ .Content }}
+                {{ else }}
+                    <p>Archived phrases in this category.</p>
+                {{ end }}
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 🌟 核心区块：词条网格列表 -->
+  <!-- 🌟 核心区块：词条网格列表 -->
+    <section class="section section-padding" style="min-height: 50vh;">
+        <div class="container">
+            
+            <!-- 🧙‍♂️ 魔法代码：主动查询所有参数中 category 等于当前标题的文章 -->
+            {{ $currentCategory := .Title }}
+            {{ $matchedPages := where .Site.RegularPages "Params.category" $currentCategory }}
+            
+            <!-- 如果没找到文章，显示提示语 -->
+            {{ if eq (len $matchedPages) 0 }}
+                <div class="notification is-warning is-light has-text-centered mt-5">
+                    <strong>Oops!</strong> No phrases found for "{{ $currentCategory }}".
+                </div>
+            {{ else }}
+                <div class="columns is-multiline">
+                    <!-- 遍历主动抓取到的文章 -->
+                    {{ range $matchedPages }}
+                    <div class="column is-one-third-desktop is-half-tablet">
+                        <div class="box h-100" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <p class="title is-5 chinglish-font">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                            <p class="mt-2" style="line-height: 1.4;">
+                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            {{ end }}
+
+        </div>
+    </section>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>

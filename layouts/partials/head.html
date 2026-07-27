@@ -1,0 +1,97 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================
+     🌟 预处理：全局智能定义 SEO 描述变量 (DRY 原则)
+     ========================================== -->
+{{ $seo_desc := "" }}
+{{ if .IsHome }}
+    {{ $seo_desc = .Site.Params.description }}
+{{ else if .Description }}
+    {{ $seo_desc = .Description }}
+{{ else }}
+    {{ $seo_desc = .Summary | plainify | htmlUnescape | replaceRE "[\n\r]+" " " | truncate 160 }}
+{{ end }}
+
+<!-- ==========================================
+     1. 核心 SEO: 智能 TDK
+     ========================================== -->
+<title>
+    {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+</title>
+<!-- 统一调用顶部计算好的变量 -->
+<meta name="description" content="{{ $seo_desc }}">
+
+{{ if .IsHome }}
+    <meta name="keywords" content="Chinglish, Chinese slang, literal translation, internet slang, Chinese culture, 中式英语词典, 英语梗">
+{{ else }}
+    {{ if .Params.keywords }}<meta name="keywords" content="{{ delimit .Params.keywords ", " }}">
+    {{ else if .Params.tags }}<meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+    {{ else }}<meta name="keywords" content="{{ .Title }}, Chinglish, Chinese slang">{{ end }}
+{{ end }}
+
+<!-- ==========================================
+     2. 社交媒体 Meta 标签 (Open Graph & Twitter)
+     ========================================== -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ "/images/default-cover.jpg" | absURL }}{{ end }}">
+<!-- 统一调用顶部计算好的变量 -->
+<meta property="og:description" content="{{ $seo_desc }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta name="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ "/images/default-cover.jpg" | absURL }}{{ end }}">
+<!-- 统一调用顶部计算好的变量 -->
+<meta name="twitter:description" content="{{ $seo_desc }}">
+
+<!-- ==========================================
+     3. 智能 JSON-LD 结构化数据 (完美覆盖所有页面)
+     ========================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  
+  {{ if .IsHome }}
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ $seo_desc }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "logo": { "@type": "ImageObject", "url": "{{ "/images/default-cover.webp" | absURL }}" }
+  }
+  
+  {{ else if .IsPage }}
+  "@type": "Article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ .Permalink }}" },
+  "headline": "{{ .Title }}",
+  "image": "{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ "/images/default-cover.webp" | absURL }}{{ end }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "logo": { "@type": "ImageObject", "url": "{{ "/images/default-cover.webp" | absURL }}" }
+  },
+  "description": "{{ $seo_desc }}"
+
+  {{ else }}
+  "@type": "CollectionPage",
+  "name": "{{ .Title }}",
+  "url": "{{ .Permalink }}",
+  "description": "{{ $seo_desc }}"
+  {{ end }}
+}
+</script>
+
+<!-- ==========================================
+     4. 静态资源引入 (CSS 与 字体)
+     ========================================== -->
+<link rel="stylesheet" href="/css/bulma.min.css">
+<link rel="stylesheet" href="/css/style.css"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">

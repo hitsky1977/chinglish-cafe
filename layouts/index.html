@@ -24,39 +24,40 @@
     </section>
 
 <!-- 第一区块：图文组合推荐词条 -->
-    <section class="section section-padding">
-        <div class="container">
-            <div class="columns is-multiline">
-                
-                <!-- 🌟 核心修改 1：只筛选 featured 属性为 true 的文章 -->
-                {{ $featured := where .Site.RegularPages "Params.featured" true }}
-                
-                {{ range first 4 $featured }}
-                <div class="column is-one-quarter-desktop is-half-tablet">
-                    <div class="card">
-                        {{ $img := .Params.thumbnail | default .Params.image | default "/images/default-cover.webp" }}
-                        <div class="card-image mb-4">
-                            <figure class="image is-16by9">
-                                <img src="{{ $img }}" alt="{{ .Title }}" style="object-fit: cover; border-radius: 8px;">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 chinglish-font">
-                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
-                            </p>
-                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
-                            <p class="mt-2" style="line-height: 1.4;">
-                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
-                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
-                            </p>
-                        </div>
+   <section class="section section-padding">
+    <div class="container">
+        <div class="columns is-multiline">
+            
+            {{ $featured := where .Site.RegularPages "Params.featured" true }}
+            
+            <!-- 🌟 核心修改：通过 $index 变量判断是否为第一项 -->
+            {{ range $index, $element := first 4 $featured }}
+            <div class="column is-one-quarter-desktop is-half-tablet">
+                <div class="card">
+                    {{ $img := .Params.thumbnail | default .Params.image | default "/images/default-cover.webp" }}
+                    <div class="card-image mb-4">
+                        <figure class="image is-16by9">
+                            <!-- 如果是第一张图（$index == 0），加上 fetchpriority="high"；否则不加 -->
+                            <img src="{{ $img }}" alt="{{ .Title }}" style="object-fit: cover; border-radius: 8px;" {{ if eq $index 0 }}fetchpriority="high"{{ end }}>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-4 chinglish-font">
+                            <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                        </p>
+                        <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                        <p class="mt-2" style="line-height: 1.4;">
+                            <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                            <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                        </p>
                     </div>
                 </div>
-                {{ end }}
-                
             </div>
+            {{ end }}
+            
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- 第二区块：按类别垂直罗列 (动态智能生成版) -->
     <section class="section section-padding pt-0">

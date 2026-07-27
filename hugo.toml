@@ -1,8 +1,8 @@
 # ==========================================
 # 1. 基础与 SEO 配置
 # ==========================================
-# 网站上线前，记得把这里改成你的真实域名 (如 'https://chinglish.cafe/')
-baseURL = 'http://localhost:1313/' 
+# 网站上线前，记得把这里改成你的真实域名 (必须以 / 结尾)
+baseURL = 'https://chinglish.cafe/' 
 
 # 语言设置为美式英语，契合主要受众
 languageCode = 'en-us' 
@@ -12,6 +12,9 @@ title = 'Chinglish Cafe | The Dictionary of Chinese-English Slang'
 
 # 首页分页数量，建议是 3 的倍数（因为我们用的是 is-one-third 三列网格布局）
 paginate = 12 
+
+# 🌟 新增：开启搜索引擎爬虫协议文件自动生成
+enableRobotsTXT = true
 
 # ==========================================
 # 2. 路由与链接优化 (Permalinks)
@@ -23,17 +26,23 @@ paginate = 12
 # ==========================================
 # 3. 分类系统映射 (Taxonomies)
 # ==========================================
-# 极其重要：我们在 CMS 里设计的字段名叫 category (单数)，
-# 必须在这里告诉 Hugo 把它识别为系统的分类系统。
+# 必须在这里告诉 Hugo 把 category 识别为系统的分类系统。
 [taxonomies]
   category = "categories"
   tag = "tags"
 
+# ==========================================
+# 4. 站点地图配置 (Sitemap - SEO 专用)
+# ==========================================
+# 告诉搜索引擎网站大约多久更新一次，以及抓取的优先级
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.8
+  filename = "sitemap.xml"
 
 # ==========================================
-# 4. 社交媒体与全局参数 (Custom Params)
+# 5. 社交媒体与全局参数 (Custom Params)
 # ==========================================
-# 这些参数可以在 HTML 模板的 <head> 里被调用，用于生成精美的分享卡片
 [params]
   # 网站的全局描述 (Meta Description)，显示在 Google 搜索结果的描述栏
   description = "Explore the hilarious and fascinating world of Chinglish. Discover literal translations, internet slang, and the cultural context behind them."
@@ -41,6 +50,5 @@ paginate = 12
   # 网站作者或运营者信息
   author = "Chinglish Cafe Team"
   
-  # 默认的社交分享预览图 (放在 static/images/ 目录下)
-  # 当某个词条没有单独配图时，社交平台会抓取这张图兜底
-  defaultSocialImage = "/images/default-share-card.jpg"
+  # 🌟 修正：默认的社交分享预览图 (匹配你 static/images/ 里的真实文件名)
+  defaultSocialImage = "/images/default-cover.webp"

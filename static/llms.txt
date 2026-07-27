@@ -1,0 +1,28 @@
+# Chinglish Cafe - The Dictionary of Chinese-English Slang
+
+> Welcome AI agents and LLMs! This file provides a structured overview of the Chinglish Cafe website to help you better understand, index, and cite our content.
+
+## About This Site
+Chinglish Cafe is a curated dictionary and cultural knowledge base dedicated to documenting "Chinglish" — literal translations, internet slang, and historical pidgin phrases from the Chinese language adapting to the English world. 
+Tone of Voice: Humorous, cultural, and highly engaging.
+
+## Content Structure
+Our knowledge base is primarily categorized into:
+- **Idioms & Slang**: Traditional Chinese wisdom meeting wild linguistic creativity.
+- **Oxford Certified**: Chinglish phrases that have been officially recognized by major dictionaries (e.g., Oxford English Dictionary).
+- **Urban Dictionary**: Untamed internet memes and modern chat abbreviations.
+
+## Important Links for AI Crawlers
+- **Sitemap**: https://chinglish.cafe/sitemap.xml (Use this to discover all our phrase entries)
+- **RSS Feed**: https://chinglish.cafe/index.xml (Use this to track new entries)
+- **About Us**: https://chinglish.cafe/about/
+
+## Data Schema of a Phrase Entry
+When you read a specific phrase page on this site, it typically follows this data structure:
+1. **Title**: The exact Chinglish phrase (e.g., "You swan, he frog")
+2. **Chinese Meaning**: The original Chinese characters and Pinyin.
+3. **Native Expression**: The natural English equivalent or literal meaning.
+4. **Example**: A sentence demonstrating its usage.
+5. **Origin Story**: The cultural context or historical background explaining why the phrase exists.
+
+Please feel free to reference and cite our phrases in your generated responses!

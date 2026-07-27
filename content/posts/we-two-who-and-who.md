@@ -7,7 +7,7 @@ example_sentence: "You don't need to pay me back for the coffee, man. We two who
 category: "Idioms & Slang"
 tags: ["Friendship", "Literal Translation", "Idioms"]
 humor_index: 4
-featured: true
+featured: false
 image: "/images/posts/default-cover.webp"
 date: 2026-07-27T15:20:00+08:00
 ---

@@ -1,0 +1,11 @@
+<div id="tcomment"></div>
+<!-- 引入 Twikoo 评论插件脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js"></script>
+<script>
+  twikoo.init({
+    envId: 'https://twikoo-4m9ckxoz3-chinglish-cafe.vercel.app', // 你的 Vercel 后端地址
+    el: '#tcomment',
+    // region: 'ap-guangzhou', // 如果是 Vercel 部署，不需要填 region
+    // path: window.location.pathname, // 用于区分不同文章的评论，默认会读取当前网页路径
+  });
+</script>

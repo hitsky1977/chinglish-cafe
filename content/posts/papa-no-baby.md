@@ -4,7 +4,7 @@ chinglish_phrase: "Papa no baby"
 chinese_meaning: "不孕不育 (Bù yùn bù yù)"
 native_expression: "Infertility / Unable to conceive"
 example_sentence: "Did you see the English translation on that hospital billboard? It literally advertised treatments for 'Papa no baby'."
-category: "Urban Dictionary"
+category: "Idioms & Slang"
 tags: ["Medical", "Wild Translation", "Memes"]
 humor_index: 5
 featured: false

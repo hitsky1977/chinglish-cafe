@@ -13,9 +13,9 @@ Our knowledge base is primarily categorized into:
 - **Urban Dictionary**: Untamed internet memes and modern chat abbreviations.
 
 ## Important Links for AI Crawlers
-- **Sitemap**: https://chinglish.cafe/sitemap.xml (Use this to discover all our phrase entries)
-- **RSS Feed**: https://chinglish.cafe/index.xml (Use this to track new entries)
-- **About Us**: https://chinglish.cafe/about/
+- [Sitemap](https://chinglish.cafe/sitemap.xml): Use this to discover all our phrase entries
+- [RSS Feed](https://chinglish.cafe/index.xml): Use this to track new entries
+- [About Us](https://chinglish.cafe/about/): Learn more about our mission
 
 ## Data Schema of a Phrase Entry
 When you read a specific phrase page on this site, it typically follows this data structure:

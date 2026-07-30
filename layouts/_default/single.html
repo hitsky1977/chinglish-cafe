@@ -65,7 +65,7 @@
                     <!-- 默认图片补全 (加入了 width 和 height 防止页面布局抖动) -->
                     {{ $coverImage := .Params.image | default "/images/default-cover.webp" }}
                     <figure class="image mb-6">
-                        <img src="{{ $coverImage }}" alt="{{ .Title }}" width="800" height="450" style="border-radius: 8px; object-fit: cover; max-height: 450px; width: 100%;">
+                        <img src="{{ $coverImage }}" alt="{{ .Title }}" width="800" height="450" fetchpriority="high"  style="border-radius: 8px; object-fit: cover; max-height: 450px; width: 100%;">
                     </figure>
 
                     <!-- Markdown 正文区 -->

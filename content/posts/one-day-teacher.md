@@ -8,8 +8,6 @@ chinese_meaning: "一日为师，终身为父 (yī rì wéi shī, zhōng shēn w
 native_expression: "A teacher for a day is a father for a lifetime"
 is_dictionary_added: false
 humor_index: 4
-thumbnail: "/images/posts/thumbs/teacher-father-thumb.jpg"
-image: "/images/posts/teacher-father.jpg"
 example_sentence: "You taught me how to use Photoshop once. One day teacher, day day father!"
 ---
 

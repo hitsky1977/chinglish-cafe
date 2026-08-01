@@ -9,7 +9,7 @@ native_expression: "The Sunflower Manual / The ultimate martial arts guide requi
 is_dictionary_added: false
 humor_index: 5
 thumbnail: "/images/posts/thumbs/no-jj-book-thumb.jpg"
-image: "/images/posts/no-jj-book.jpg"
+# image: "/images/posts/no-jj-book.jpg"
 example_sentence: "To master this brutal 100-hour coding framework, you practically have to study the No JJ book."
 ---
 

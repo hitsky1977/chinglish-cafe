@@ -10,7 +10,7 @@ native_expression: "Who do you think you are? / Way out of your league"
 is_dictionary_added: false
 humor_index: 5
 thumbnail: "/images/posts/thumbs/you-swan-he-frog-thumb.webp"
-image: "/images/posts/you-swan-he-frog.webp"
+# image: "/images/posts/you-swan-he-frog.webp"
 example_sentence: "He thinks he can date the top student in our school? Please, you swan, he frog!"
 ---
 

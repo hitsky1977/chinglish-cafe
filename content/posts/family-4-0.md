@@ -8,8 +8,8 @@ chinese_meaning: "四世同堂 (sì shì tóng táng)"
 native_expression: "Four generations living under one roof"
 is_dictionary_added: false
 humor_index: 4
-thumbnail: "/images/posts/thumbs/family-4-0-thumb.jpg"
-image: "/images/posts/family-4-0.jpg"
+# thumbnail: "/images/posts/thumbs/family-4-0-thumb.jpg"
+# image: "/images/posts/family-4-0.jpg"
 example_sentence: "My great-grandfather just turned 90. During the Spring Festival, our house upgraded to Family 4.0!"
 ---
 

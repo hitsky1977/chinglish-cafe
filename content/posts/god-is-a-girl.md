@@ -8,8 +8,8 @@ chinese_meaning: "上帝不公 (shàng dì bù gōng)"
 native_expression: "God is unfair / Life is not fair"
 is_dictionary_added: false
 humor_index: 5
-thumbnail: "/images/posts/thumbs/god-is-a-girl-thumb.jpg"
-image: "/images/posts/god-is-a-girl.jpg"
+# thumbnail: "/images/posts/thumbs/god-is-a-girl-thumb.jpg"
+# image: "/images/posts/god-is-a-girl.jpg"
 example_sentence: "Why did he win the lottery while I lost my wallet? God is a girl!"
 ---
 

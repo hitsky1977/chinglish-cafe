@@ -8,7 +8,7 @@ category: "Idioms & Slang"
 tags: ["Literal Translation", "Slang", "Attitude"]
 humor_index: 5
 featured: false
-image: "/images/posts/default-cover.webp"
+# image: "/images/posts/default-cover.webp"
 date: 2026-07-27T15:10:00+08:00
 ---
 

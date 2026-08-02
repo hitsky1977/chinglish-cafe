@@ -8,8 +8,8 @@ chinese_meaning: "彼此彼此 (bǐ cǐ bǐ cǐ)"
 native_expression: "The feeling is mutual / Likewise / Same here"
 is_dictionary_added: false
 humor_index: 4
-thumbnail: "/images/posts/thumbs/you-me-you-me-thumb.jpg"
-image: "/images/posts/you-me-you-me.jpg"
+# thumbnail: "/images/posts/thumbs/you-me-you-me-thumb.jpg"
+# image: "/images/posts/you-me-you-me.jpg"
 example_sentence: "You did a great job today! —Oh, you me you me!"
 ---
 

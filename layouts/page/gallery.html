@@ -1,0 +1,64 @@
+{{ define "main" }}
+<main class="section section-padding">
+    <div class="container" style="max-width: 1140px;">
+        
+        <!-- 🌟 页面大标题与导读 -->
+        <div class="has-text-centered mb-6">
+            <h1 class="title is-2 color-coffee mb-3">🖼️ {{ .Title }}</h1>
+            <p class="subtitle is-5 has-text-grey">{{ .Description }}</p>
+            <span class="tag is-medium is-light mt-2">
+                📸 Archived Photos:&nbsp;<strong>{{ len site.Data.gallery }}</strong>
+            </span>
+        </div>
+
+        <!-- 🌟 循环数据源：自动排版画廊卡片 -->
+        <div class="columns is-multiline">
+            
+            {{ range site.Data.gallery }}
+            <div class="column is-one-third-desktop is-half-tablet">
+                <div class="card h-100" style="display: flex; flex-direction: column; justify-content: space-between; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); overflow: hidden;">
+                    
+                    <div>
+                        <!-- 1. 图片展示区 -->
+                        {{ if .image }}
+                        <div class="card-image">
+                            <figure class="image is-16by9">
+                                <img src="{{ .image }}" alt="{{ .title }}" style="object-fit: cover;">
+                            </figure>
+                        </div>
+                        {{ end }}
+
+                        <!-- 2. 中英文标题与对照词标语 -->
+                        <div class="card-content pb-2">
+                            <p class="title is-4 chinglish-font mb-2">
+                                {{ .title }}
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mb-2" lang="zh-CN">
+                                {{ .chinese }}
+                            </p>
+                            <p class="is-size-7" style="line-height: 1.4;">
+                                <span class="has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="has-text-grey-dark">{{ .native }}</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3. 可选说明区域：如果有 desc 字段，则自动渲染这个底部分隔块 -->
+                    {{ if .desc }}
+                    <div class="card-content pt-0">
+                        <hr class="my-3" style="background-color: #f0f0f0; height: 1px;">
+                        <p class="is-size-7 has-text-grey" style="line-height: 1.6;">
+                            {{ .desc }}
+                        </p>
+                    </div>
+                    {{ end }}
+
+                </div>
+            </div>
+            {{ end }}
+
+        </div>
+
+    </div>
+</main>
+{{ end }}

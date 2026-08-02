@@ -1,0 +1,14 @@
+# data/gallery.yaml
+
+- title: "Water depth hazard, do not water."
+  chinese: "水深危险，请勿下水"
+  native: "Danger: Deep Water, Do Not Enter."
+  image: "/images/gallery/do-not-water.webp"
+  desc: "river chinglish warning sign"
+
+- title: "Lighting - prone area Please do not climbing"
+  chinese: "雷雨天气 请勿登山"
+  native: "Do not climb during thunderstorms"
+  image: "/images/gallery/fog-water.webp"
+  desc: "This sign warns hikers to avoid climbing during thunderstorms due to lightning risks, ensuring safety."
+  

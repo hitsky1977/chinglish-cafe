@@ -8,8 +8,8 @@ chinese_meaning: "滴水之恩，当涌泉相报 (dī shuǐ zhī ēn, dāng yǒn
 native_expression: "Repay a drop of water with a rushing spring / A small favor will be repaid manifold"
 is_dictionary_added: false
 humor_index: 5
-thumbnail: "/images/posts/thumbs/dida-huala-thumb.jpg"
-image: "/images/posts/dida-huala.jpg"
+# thumbnail: "/images/posts/thumbs/dida-huala-thumb.jpg"
+# image: "/images/posts/dida-huala.jpg"
 example_sentence: "Thanks for lending me ten bucks yesterday. Next time you're broke, you dida-dida me, I huala-huala you!"
 ---
 

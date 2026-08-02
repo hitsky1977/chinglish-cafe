@@ -8,7 +8,7 @@ category: "Idioms & Slang"
 tags: ["Friendship", "Literal Translation", "Idioms"]
 humor_index: 4
 featured: false
-image: "/images/posts/default-cover.webp"
+# image: "/images/posts/default-cover.webp"
 date: 2026-07-27T15:20:00+08:00
 ---
 

@@ -8,7 +8,7 @@ category: "Idioms & Slang"
 tags: ["Attitude", "Literal Translation", "Slang"]
 humor_index: 4
 featured: false
-image: "/images/posts/love-who-who.webp"
+# image: "/images/posts/love-who-who.webp"
 date: 2026-07-27T15:00:00+08:00
 ---
 

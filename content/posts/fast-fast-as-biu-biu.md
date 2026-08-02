@@ -8,8 +8,8 @@ chinese_meaning: "急急如律令 (jí jí rú lǜ lìng)"
 native_expression: "Without delay / As fast as lightning / Presto!"
 is_dictionary_added: false
 humor_index: 5
-thumbnail: "/images/posts/thumbs/biu-biu-thumb.jpg"
-image: "/images/posts/biu-biu.jpg"
+# thumbnail: "/images/posts/thumbs/biu-biu-thumb.jpg"
+# image: "/images/posts/biu-biu.jpg"
 example_sentence: "Send me the homework answers right now! Fast fast as biu biu!"
 ---
 

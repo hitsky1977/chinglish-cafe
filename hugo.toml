@@ -16,6 +16,7 @@ title = 'Chinglish Cafe | The Dictionary of Chinese-English Slang'
 
 # 🌟 新增：开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
+disableHugoGeneratorInject = true
 
 # ==========================================
 # 2. 路由与链接优化 (Permalinks)
@@ -54,3 +55,5 @@ enableRobotsTXT = true
   
   # 🌟 修正：默认的社交分享预览图 (匹配你 static/images/ 里的真实文件名)
   defaultSocialImage = "/images/default-cover.webp"
+  
+  

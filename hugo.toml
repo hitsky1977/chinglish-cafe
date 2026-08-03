@@ -11,7 +11,8 @@ languageCode = 'en-us'
 title = 'Chinglish Cafe | The Dictionary of Chinese-English Slang'
 
 # 首页分页数量，建议是 3 的倍数（因为我们用的是 is-one-third 三列网格布局）
-paginate = 12 
+[pagination]
+  pagerSize = 12
 
 # 🌟 新增：开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
@@ -22,6 +23,7 @@ enableRobotsTXT = true
 # 去掉 /posts/ 前缀，让所有词条 URL 保持极简 (如 /you-can-you-up/)
 [permalinks]
   posts = "/:slug/"
+  page = "/:slug/"   # 🌟 必须加上这一行！告诉 Hugo 所有独立单页也按照纯 slug 路径渲染
 
 # ==========================================
 # 3. 分类系统映射 (Taxonomies)

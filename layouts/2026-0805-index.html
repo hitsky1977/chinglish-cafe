@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ {{ partial "head.html" . }}
+</head>
+<body>
+<main>
+    <!-- 🌟 顶部 Header：加入了 hero-pattern 背景 -->
+    <section class="hero is-small hero-pattern">
+        <div class="hero-body has-text-centered py-6">
+            <h1 class="title is-size-1 has-text-weight-bold">
+               <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span><img src="/images/papercut-48.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-home" width="32" height="32"><span class="color-coffee">Cafe</span>
+            </h1>
+            <p class="subtitle is-size-5 mt-3 has-text-grey mx-auto" style="max-width: 780px; line-height: 1.6;">
+                {{ .Site.Params.description }}
+            </p>
+            <div class="has-text-centered my-4">
+                <span class="tag is-medium is-light">
+                    📚 Archived Chinglish Phrases:&nbsp;<strong>{{ len (where .Site.RegularPages "Section" "posts") }}</strong>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第一区块：图文组合推荐词条 -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="columns is-multiline">
+                
+                {{ $featured := where .Site.RegularPages "Params.featured" true }}
+                
+                {{ range $index, $element := first 4 $featured }}
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="card">
+                        {{ $img := .Params.thumbnail | default .Params.image | default "/images/default-cover.webp" }}
+                        <div class="card-image mb-4">
+                            <figure class="image is-16by9">
+                                <img src="{{ $img }}" alt="{{ .Title }}" style="object-fit: cover; border-radius: 8px;" {{ if eq $index 0 }}fetchpriority="high"{{ end }}>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-4 chinglish-font">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                            <p class="mt-2" style="line-height: 1.4;">
+                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌟 新增区块：最近更新 (Recently Added / Fresh Entries) -->
+    <section class="section section-padding pt-0">
+        <div class="container">
+            <!-- 极具网感的文案标题 -->
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2 color-coffee mb-3">📝 Fresh Entries</h2>
+                <p class="subtitle is-5 has-text-grey">Fresh from the streets, the internet, and cultural collisions.</p>
+            </div>
+            
+            <div class="columns is-multiline">
+               <!-- 抓取最新发布的 3 篇文章 (按时间倒序) -->
+                {{ $recentPages := where .Site.RegularPages "Section" "posts" }}
+                {{ range first 3 $recentPages.ByDate.Reverse }}
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="box h-100" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-top: 3px solid #DE2910;">
+                        <!-- 新增时间戳，突出“新鲜感” -->
+                        <p class="is-size-7 has-text-grey-light mb-2">Added: {{ .Date.Format "Jan 02, 2006" }}</p>
+                        
+                        <p class="title is-5 chinglish-font mb-2">
+                            <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                        </p>
+                        <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mb-3" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                        <p class="is-size-6 has-text-grey" style="line-height: 1.4;">
+                            <span class="has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                            {{ .Params.native_expression }}
+                        </p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- 第二区块：按类别垂直罗列 (动态智能生成版) -->
+    <section class="section section-padding pt-0">
+        <div class="container">
+            
+            {{ $normalPages := where .Site.RegularPages "Params.featured" "!=" true }}
+            
+            {{ range $normalPages.GroupByParam "category" }}
+            
+            <div class="category-block mb-6">
+               <h2 class="title is-4 has-text-grey-dark category-header">
+                    <a href="{{ printf "/%s/" (.Key | urlize) }}" class="has-text-grey-dark">
+                        # {{ .Key }} <span class="is-size-6 has-text-weight-normal has-text-grey">(&rarr; View All)</span>
+                    </a>
+                </h2>
+                <div class="columns is-multiline">
+                    
+                    {{ range .Pages }}
+                    <div class="column is-one-third-desktop is-half-tablet">
+                        <div class="box h-100">
+                            <p class="title is-5 chinglish-font">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            </p>
+                            <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">{{ .Params.chinese_meaning }}</p>
+                            <p class="mt-2" style="line-height: 1.4;">
+                                <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
+                                <span class="is-size-6 has-text-grey-dark">{{ .Params.native_expression }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    {{ end }}
+                    
+                </div>
+            </div>
+            
+            {{ end }}
+
+        </div>
+    </section>
+
+    <!-- 🌟 自定义样式 -->
+    <style>
+        .feature-card {
+            transition: all 0.3s ease; 
+            border-radius: 12px;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+        .feature-desc {
+            line-height: 1.6;
+            min-height: 4.8em; 
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <!-- 主题栏目区块 -->
+    <section class="section section-padding pt-0">
+        <div class="container">
+            <div class="columns is-multiline mb-6">
+                
+                <!-- 模块 1: Oxford Certified -->
+                <div class="column is-one-third-desktop is-full-tablet">
+                    <div class="box feature-card has-background-warning-light has-text-centered p-5">
+                        <div>
+                            <div class="icon-wrapper">📖</div>
+                            <h3 class="title is-4 has-text-grey-dark">Oxford Certified</h3>
+                            <p class="has-text-grey feature-desc is-size-6">
+                                Explore legendary Chinglish phrases that have officially crossed cultural borders. These linguistic marvels are now proudly recognized in prestigious English dictionaries.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="/oxford/" aria-label="Explore Oxford Certified phrases" class="button is-warning is-rounded is-fullwidth has-text-weight-bold has-text-dark">Explore Oxford</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块 2: Urban Dictionary -->
+                <div class="column is-one-third-desktop is-full-tablet">
+                    <div class="box feature-card has-background-info-light has-text-centered p-5">
+                        <div>
+                            <div class="icon-wrapper">💬</div>
+                            <h3 class="title is-4 has-text-grey-dark">Urban Dictionary</h3>
+                            <p class="has-text-grey feature-desc is-size-6">
+                                Dive into the untamed world of Chinese internet slang. Discover the most creative, chaotic, and viral expressions currently dominating daily digital conversations.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="/urbandict/" aria-label="Explore Urban Dictionary slang" class="button is-info is-rounded is-fullwidth has-text-weight-bold has-text-white">Explore Slang</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块 3: 5-Star Hilarious -->
+                <div class="column is-one-third-desktop is-full-tablet">
+                    <div class="box feature-card has-background-primary-light has-text-centered p-5">
+                        <div>
+                            <div class="icon-wrapper">😂</div>
+                            <h3 class="title is-4 has-text-grey-dark">5-Star Hilarious</h3>
+                            <p class="has-text-grey feature-desc is-size-6">
+                                Prepare yourself for non-stop laughter. We've handpicked the absolute funniest, most bizarre, and mind-bending translation fails that achieved legendary comedy status.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="/hilarious/" aria-label="Explore 5-Star Hilarious fails" class="button is-primary is-rounded is-fullwidth has-text-weight-bold has-text-white">Explore Fails</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 💡 惊艳的冷知识区块 (Did You Know?) -->
+    <section class="section section-padding has-background-warning-light">
+        <div class="container" style="max-width: 1080px;">
+            <div class="box p-6" style="border: 2px solid #5C4033; border-radius: 12px; box-shadow: 6px 6px 0px 0px rgba(92, 64, 51, 0.08);">
+                <h2 class="title is-2 has-text-centered color-coffee mb-6 is-uppercase" style="letter-spacing: 2px;">
+                    💡 Did You Know?
+                </h2>
+                
+                <div class="columns is-multiline">
+                    <!-- 冷知识 1 -->
+                    <div class="column is-12 mb-2">
+                        <div class="is-flex is-align-items-flex-start">
+                            <span class="is-size-2 mr-4">📖</span>
+                            <div>
+                                <p class="is-size-4 has-text-weight-bold color-coffee mb-2">"Long time no see" first appeared in English literature in 1900.</p>
+                                <p class="is-size-6 has-text-grey-dark">It was famously used in W.F. Drannan's book <em>Thirty-One Years on the Plains and in the Mountains</em>, marking early Chinglish entering mainstream English.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column is-12 py-0"><hr class="has-background-grey-lighter my-2" style="height: 1px;"></div>
+                    
+                    <!-- 冷知识 2 -->
+                    <div class="column is-12 mt-2">
+                        <div class="is-flex is-align-items-flex-start">
+                            <span class="is-size-2 mr-4">🏆</span>
+                            <div>
+                                <p class="is-size-4 has-text-weight-bold color-coffee mb-2">"Add oil" (加油) was officially added to the Oxford English Dictionary in 2018.</p>
+                                <p class="is-size-6 has-text-grey-dark">Recognized as a legitimate expression of encouragement, proving that Chinglish is not just "broken English", but a <strong class="color-cn-red">new dialect forming in real-time</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 第四区块：独立的 About 介绍 (卡片风格) -->
+    <section class="section section-padding pt-6 pb-6" style="background-color: #faf9f6;">
+        <div class="container has-text-centered">
+            <div class="box mx-auto px-6 py-6" style="max-width: 1080px; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border-top: 4px solid #c8a97e;">
+                <h2 class="title is-4 has-text-grey-dark mb-4" style="letter-spacing: 1px;">
+                    <span style="font-size: 1.2em; vertical-align: middle; margin-right: 8px;">☕</span>About Chinglish.Cafe
+                </h2>
+                <p class="has-text-grey is-size-5 mx-auto mt-4" style="line-height: 1.8; font-weight: 300;">
+                    <strong class="has-text-grey-dark">Chinglish is not just "bad English"</strong>—it's a fascinating cultural bridge. 
+                    This site is dedicated to archiving literal translations, internet slang, and historical pidgin phrases 
+                    that showcase the humor and creativity of the Chinese language meeting the English world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📬 征集词条区块 -->
+    <section class="section section-padding has-background-info-light">
+        <div class="container has-text-centered">
+            <h2 class="title is-2 color-coffee mb-4">Found a New Expression?</h2>
+            <p class="subtitle is-5 has-text-grey-dark mb-6">Help us grow this dictionary by submitting Chinglish phrases you've encountered <strong class="color-coffee">in the wild</strong>.</p>
+            <a href="/submit/" class="button is-rounded is-large has-text-weight-bold has-text-white" style="background-color: #DE2910;">Submit a Phrase →</a>
+        </div>
+    </section>
+</main>
+  {{ partial "footer.html" . }}
+</body>
+</html>

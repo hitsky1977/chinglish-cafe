@@ -1,7 +1,8 @@
 ---
 title: "Give You Some Color to See See"
 date: 2026-07-23T18:10:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Slang", "Threat"]
 chinglish_phrase: "Give you some color to see see"
 chinese_meaning: "给你点颜色看看 (gěi nǐ diǎn yán sè kàn kan)"

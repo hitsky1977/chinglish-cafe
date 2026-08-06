@@ -1,7 +1,8 @@
 ---
 title: "Watch Sister"
 date: 2026-07-23T18:20:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Mistranslation", "Family"]
 chinglish_phrase: "Watch sister"
 chinese_meaning: "表妹 (biǎo mèi)"

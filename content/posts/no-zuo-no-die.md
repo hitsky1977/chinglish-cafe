@@ -1,7 +1,8 @@
 ---
 title: "No Zuo No Die"
 date: 2026-07-23T19:05:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 featured: true
 tags: ["Chinglish", "Urban Dictionary", "Karma"]
 chinglish_phrase: "No zuo no die"

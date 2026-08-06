@@ -1,7 +1,8 @@
 ---
 title: "Laugh to Pee"
 date: 2026-07-23T19:25:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Emotion", "Exaggeration"]
 chinglish_phrase: "Laugh to pee"
 chinese_meaning: "笑尿了 (xiào niào le)"

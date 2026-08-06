@@ -1,7 +1,8 @@
 ---
 title: "How are you? How old are you?"
 date: 2026-08-02T16:53:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Homophonic", "Pun", "Classic"]
 chinglish_phrase: "How are you? How old are you?"
 chinese_meaning: "怎么是你？怎么老是你？ (zěn me shì nǐ? zěn me lǎo shì nǐ?)"

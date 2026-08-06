@@ -1,7 +1,8 @@
 ---
 title: "Fuck the Duck Until Exploded"
 date: 2026-07-30T17:10:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 featured: true
 tags: ["Chinglish", "Menu Fails", "Food", "Legendary"]
 chinglish_phrase: "Fuck the duck until exploded"

@@ -1,7 +1,8 @@
 ---
 title: "Fast Fast as Biu Biu"
 date: 2026-07-25T12:15:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Magic", "Onomatopoeia"]
 chinglish_phrase: "Fast fast as biu biu"
 chinese_meaning: "急急如律令 (jí jí rú lǜ lìng)"

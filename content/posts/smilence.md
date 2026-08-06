@@ -1,7 +1,8 @@
 ---
 title: "Smilence"
 date: 2026-07-23T19:10:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Portmanteau", "Emotion"]
 chinglish_phrase: "Smilence"
 chinese_meaning: "笑而不语 (xiào ér bù yǔ)"

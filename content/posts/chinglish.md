@@ -1,7 +1,8 @@
 ---
 title: "Chinglish"
 date: 2026-07-23T19:30:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Meta", "Culture"]
 chinglish_phrase: "Chinglish"
 chinese_meaning: "中式英语 (zhōng shì yīng yǔ)"

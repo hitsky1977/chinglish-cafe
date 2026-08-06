@@ -4,7 +4,8 @@ chinglish_phrase: "No money no talk."
 chinese_meaning: "没钱免谈 (Méi qián miǎn tán)"
 native_expression: "Money talks / No pay, no play / Show me the money"
 example_sentence: "You want me to work on my day off for 'exposure'? Sorry, no money no talk."
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Business", "Slang", "Attitude"]
 humor_index: 3
 featured: false

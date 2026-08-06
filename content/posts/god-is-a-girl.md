@@ -1,7 +1,8 @@
 ---
 title: "God is a girl"
 date: 2026-07-25T12:05:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Wordplay", "Pun"]
 chinglish_phrase: "God is a girl"
 chinese_meaning: "上帝不公 (shàng dì bù gōng)"

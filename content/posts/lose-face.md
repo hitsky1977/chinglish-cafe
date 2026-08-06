@@ -1,7 +1,8 @@
 ---
 title: "Lose Face"
 date: 2026-07-23T17:00:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Culture", "Idiom"]
 chinglish_phrase: "Lose face"
 chinese_meaning: "丢脸 (diū liǎn)"

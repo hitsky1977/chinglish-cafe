@@ -1,7 +1,8 @@
 ---
 title: "You Me You Me"
 date: 2026-07-25T12:00:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Social"]
 chinglish_phrase: "You me you me"
 chinese_meaning: "彼此彼此 (bǐ cǐ bǐ cǐ)"

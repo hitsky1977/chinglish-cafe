@@ -1,7 +1,8 @@
 ---
 title: "Horse Horse Tiger Tiger"
 date: 2026-07-24T20:40:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Animal"]
 chinglish_phrase: "Horse horse tiger tiger"
 chinese_meaning: "马马虎虎 (mǎ mǎ hǔ hǔ)"

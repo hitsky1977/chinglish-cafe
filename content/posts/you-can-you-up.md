@@ -1,7 +1,8 @@
 ---
 title: "You Can You Up, No Can No BB"
 date: 2026-07-23T19:00:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Urban Dictionary", "Slang"]
 chinglish_phrase: "You can you up, no can no bb"
 chinese_meaning: "你行你上，不行别哔哔 (nǐ xíng nǐ shàng, bù xíng bié bī bi)"

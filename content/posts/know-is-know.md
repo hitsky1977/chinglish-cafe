@@ -1,7 +1,8 @@
 ---
 title: "Know is know, no know is no know"
 date: 2026-08-02T17:05:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Classic", "Philosophy", "Proverb"]
 chinglish_phrase: "Know is know, no know is no know"
 chinese_meaning: "知之为知之，不知为不知，是知也 (zhī zhī wéi zhī zhī, bù zhī wéi bù zhī, shì zhī yě)"

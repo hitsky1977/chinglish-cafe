@@ -1,7 +1,8 @@
 ---
 title: "Long Time No See"
 date: 2026-07-23T16:55:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Greeting"]
 chinglish_phrase: "Long time no see"
 chinese_meaning: "好久不见 (hǎo jiǔ bú jiàn)"

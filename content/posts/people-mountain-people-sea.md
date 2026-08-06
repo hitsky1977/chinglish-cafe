@@ -1,7 +1,8 @@
 ---
 title: "People Mountain People Sea"
 date: 2026-07-23T18:00:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 featured: true
 tags: ["Chinglish", "Idiom", "Classic"]
 chinglish_phrase: "People mountain people sea"

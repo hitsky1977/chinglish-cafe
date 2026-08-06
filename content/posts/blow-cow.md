@@ -1,7 +1,8 @@
 ---
 title: "Blow Cow"
 date: 2026-07-24T21:40:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Slang", "Animal", "Funny"]
 chinglish_phrase: "Blow cow / Talk big cow"
 chinese_meaning: "吹牛 (chuī niú)"

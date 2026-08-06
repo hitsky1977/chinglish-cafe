@@ -1,7 +1,8 @@
 ---
 title: "Tree new bee"
 date: 2026-08-02T13:42:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Slang", "Idiom", "Homophonic"]
 chinglish_phrase: "Tree new bee"
 chinese_meaning: "吹牛皮 (chuī niú pí)"

@@ -1,7 +1,8 @@
 ---
 title: "No Three No Four"
 date: 2026-07-24T22:10:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Numbers"]
 chinglish_phrase: "No three no four"
 chinese_meaning: "不三不四 (bù sān bù sì)"

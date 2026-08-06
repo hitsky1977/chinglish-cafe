@@ -2,52 +2,97 @@
 <html lang="en">
 <head>
 {{ partial "head.html" . }}
+{{ if or (in .Params.series "Chinglish") (in .Params.series "English from China") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTerm",
+  "name": "{{ .Params.chinglish_phrase | default .Params.english_phrase }}",
+  "description": "{{ .Params.native_expression }}",
+  "inDefinedTermSet": "https://chinglish.cafe",
+  "termCode": "{{ .Params.chinese_meaning | default .Params.chinese_origin }}"
+}
+</script>
+{{ end }}
 </head>
 <body>
 
     <!-- 顶部导航 -->
-    <nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
-        <div class="container">
-            <div class="navbar-brand">
-               <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
-    <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span><img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav" width="18" height="18"><span class="color-coffee">Cafe</span>
-</a>
-            </div>
-            <div class="navbar-menu is-active" style="box-shadow: none;">
-                <div class="navbar-end">
-                    <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">
-                        &larr; Back to Home
-                    </a>
-                </div>
+  <nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
+                <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span>
+                <img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav">
+                <span class="color-coffee">Cafe</span>
+            </a>
+        </div>
+        <div class="navbar-menu is-active" style="box-shadow: none;">
+            <div class="navbar-end">
+                <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">&larr; Home</a>
+                <a href="/gallery/" class="navbar-item has-text-grey has-text-weight-semibold">📸 Gallery</a>
+                <a href="/english-from-china/" class="navbar-item has-text-grey has-text-weight-semibold">📜 English from China</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- 核心布局 (已升级为语义化 <main> 标签) -->
+    {{ $isEnglishFromChina := in .Params.series "English from China" }}
+
     <main class="section">
         <div class="container">
             <div class="columns is-desktop is-variable is-6">
                 
-                <!-- 左侧主内容区 (占据 8/12 宽度) -->
                 <div class="column is-8-desktop">
                     <div class="mb-5">
-                        <h1 class="title is-1 chinglish-font color-coffee" style="font-size: 3.5rem;">
-                            {{ .Params.chinglish_phrase }}
-                        </h1>
-                        <div class="tags mt-4 are-medium">
-                            <span class="tag is-light is-rounded">{{ .Params.category }}</span>
-                            {{ if .Params.is_dictionary_added }}
-                            <span class="tag is-warning is-light is-rounded"><strong>🏆 Oxford Certified</strong></span>
-                            {{ end }}
-                            {{ if .Params.humor_index }}
-                            <span class="tag is-info is-light is-rounded">Humor:&nbsp;{{ range seq .Params.humor_index }}⭐{{ end }}</span>
-                            {{ end }}
-                        </div>
+                        {{ if $isEnglishFromChina }}
+                            <h1 class="title is-1 chinglish-font color-coffee" style="font-size: 3.5rem;">
+                                {{ .Params.english_phrase | default .Title }}
+                            </h1>
+                            <!-- 🌟 顶部标签区：只保留短标签，移除 source -->
+                            <div class="tags mt-4 are-medium">
+                                <span class="tag is-light is-rounded">{{ if reflect.IsSlice .Params.category }}{{ index .Params.category 0 }}{{ else }}{{ .Params.category }}{{ end }}</span>
+                                {{ if .Params.year }}
+                                    <span class="tag is-warning is-light is-rounded">⏳ Est. {{ .Params.year }}</span>
+                                {{ end }}
+                                {{ if .Params.notability }}
+                                    <span class="tag is-primary is-light is-rounded">🌟 Impact: {{ .Params.notability }}/5</span>
+                                {{ end }}
+                            </div>
+                        {{ else }}
+                            <h1 class="title is-1 chinglish-font color-coffee" style="font-size: 3.5rem;">
+                                {{ .Params.chinglish_phrase }}
+                            </h1>
+                            <div class="tags mt-4 are-medium">
+                               <span class="tag is-light is-rounded">{{ if reflect.IsSlice .Params.category }}{{ index .Params.category 0 }}{{ else }}{{ .Params.category }}{{ end }}</span>
+                                {{ if .Params.is_dictionary_added }}
+                                <span class="tag is-warning is-light is-rounded"><strong>🏆 Oxford Certified</strong></span>
+                                {{ end }}
+                                {{ if .Params.humor_index }}
+                                <span class="tag is-info is-light is-rounded">Humor:&nbsp;{{ range seq .Params.humor_index }}⭐{{ end }}</span>
+                                {{ end }}
+                            </div>
+                        {{ end }}
                     </div>
+
+                    <!-- 🌟 新增：English from China 专属独立来源区块 -->
+                    {{ if $isEnglishFromChina }}
+                        {{ with .Params.source }}
+                        <div class="box has-background-info-light p-4 mb-5" style="border-left: 4px solid #3298dc; border-radius: 6px;">
+                            <p class="is-size-6 has-text-grey-dark" style="line-height: 1.5;">
+                                <span class="has-text-weight-bold">📌 Source:</span> {{ . }}
+                            </p>
+                        </div>
+                        {{ end }}
+                    {{ end }}
 
                     <div class="box definition-box p-5 mb-5">
                         <p class="is-size-3 has-text-weight-bold has-text-grey-dark" lang="zh-CN">
-                            {{ .Params.chinese_meaning }}
+                            {{ if $isEnglishFromChina }}
+                                Origin: {{ .Params.chinese_origin }}
+                            {{ else }}
+                                {{ .Params.chinese_meaning }}
+                            {{ end }}
                         </p>
                         <p class="mt-4" style="line-height: 1.4;">
                             <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
@@ -62,38 +107,34 @@
                         {{ end }}
                     </div>
 
-                    <!-- 默认图片补全 (加入了 width 和 height 防止页面布局抖动) -->
                     {{ $coverImage := .Params.image | default "/images/default-cover.webp" }}
                     <figure class="image mb-6">
                         <img src="{{ $coverImage }}" alt="{{ .Title }}" width="800" height="450" fetchpriority="high"  style="border-radius: 8px; object-fit: cover; max-height: 450px; width: 100%;">
                     </figure>
 
-                    <!-- Markdown 正文区 -->
                     <div class="content">
                         {{ .Content }}
                     </div>
 
-                    <!-- 底部标签云 -->
+                    {{ $tags := .GetTerms "tags" }}
+                    {{ if gt (len $tags) 0 }}
                     <div class="mt-6 pt-5" style="border-top: 1px solid #f0f0f0;">
                         <p class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mb-3" style="letter-spacing: 0.5px;">Tags</p>
                         <div class="tags">
-                            {{ range (.GetTerms "tags") }}
+                            {{ range $tags }}
                                 <a href="{{ .Permalink }}" class="tag is-rounded has-text-grey">#{{ .LinkTitle }}</a>
                             {{ end }}
                         </div>
                     </div>
-					<!-- 👇 新增的 Twikoo 评论区容器位置 -->
-    <div class="mt-6 pt-5" style="border-top: 1px solid #f0f0f0;">
-        {{ partial "comments.html" . }}
-    </div>
+                    {{ end }}
+                    
+                    <div class="mt-6 pt-5" style="border-top: 1px solid #f0f0f0;">
+                        {{ partial "comments.html" . }}
+                    </div>
                 </div> 
 
-                <!-- 右侧边栏区 (占据 4/12 宽度) -->
                 <div class="column is-4-desktop">
-                    
                     <div class="sticky-sidebar">
-                        
-                        <!-- 分享组件 (按你要求改为普通 div，取消 H 标签) -->
                         <div class="sidebar-widget mb-5">
                             <div class="sidebar-title">Share this phrase</div>
                             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -106,14 +147,13 @@
                             <script async src="https://static.addtoany.com/menu/page.js"></script>
                         </div>
                                             
-                        <!-- 边栏模块 A：关联词条 (将 h4 改为符合 SEO 规范的 h2) -->
                         <div class="sidebar-widget mb-5">
-                            <h2 class="sidebar-title">More in {{ .Params.category }}</h2>
-                            {{ $related := where (where .Site.RegularPages "Params.category" .Params.category) ".RelPermalink" "!=" .RelPermalink }}
+                            <h2 class="sidebar-title">More in {{ if reflect.IsSlice .Params.category }}{{ index .Params.category 0 }}{{ else }}{{ .Params.category }}{{ end }}</h2>
+                            {{ $related := where (where .Site.RegularPages "Params.category" "intersect" .Params.category) ".RelPermalink" "!=" .RelPermalink }}
                             {{ range first 4 $related }}
                             <div class="mb-4">
                                 <a href="{{ .RelPermalink }}" class="title is-6 chinglish-font color-coffee" style="display: block; margin-bottom: 0.25rem;">
-                                    {{ .Params.chinglish_phrase }}
+                                    {{ .Params.chinglish_phrase | default .Params.english_phrase | default .Title }}
                                 </a>
                                 <p class="is-size-7 has-text-grey">{{ .Params.native_expression }}</p>
                             </div>
@@ -123,23 +163,18 @@
                             {{ end }}
                         </div>
 
-                        <!-- 边栏模块 B：主题单页导流 (将 h4 改为符合 SEO 规范的 h2) -->
                         <div class="sidebar-widget">
                             <h2 class="sidebar-title">Explore Collections</h2>
-                            
                             <a href="/oxford/" class="box has-background-warning-light p-3 mb-3" style="box-shadow: none; border: 1px solid #f9e29c;">
                                 <p class="title is-6 mb-1">🏆 Oxford Certified</p>  
                                 <p class="is-size-7 has-text-grey">Phrases in official dictionaries.</p>
                             </a>
-                            
                             <a href="/urbandict/" class="box has-background-info-light p-3 mb-3" style="box-shadow: none; border: 1px solid #a3d2eb;">
                                 <p class="title is-6 mb-1">🔥 Urban Dictionary</p>
                                 <p class="is-size-7 has-text-grey">The wildest internet slang.</p>
                             </a>
                         </div>
-                        
                     </div> 
-
                 </div> 
 
             </div>
@@ -147,6 +182,5 @@
     </main>
 
 {{ partial "footer.html" . }}
-
 </body>
 </html>

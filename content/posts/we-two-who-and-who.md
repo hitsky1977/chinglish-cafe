@@ -4,7 +4,8 @@ chinglish_phrase: "We two who and who!"
 chinese_meaning: "我俩谁跟谁 (Wǒ liǎ shéi gēn shéi)"
 native_expression: "We are so close! / You're my best bud, don't mention it! / We go way back"
 example_sentence: "You don't need to pay me back for the coffee, man. We two who and who!"
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Friendship", "Literal Translation", "Idioms"]
 humor_index: 4
 featured: false

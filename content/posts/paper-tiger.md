@@ -1,7 +1,8 @@
 ---
 title: "Paper Tiger"
 date: 2026-07-23T17:10:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Politics"]
 chinglish_phrase: "Paper tiger"
 chinese_meaning: "纸老虎 (zhǐ lǎo hǔ)"

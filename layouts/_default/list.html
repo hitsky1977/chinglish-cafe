@@ -5,22 +5,33 @@
 </head>
 <body>
     <!-- 简易顶部导航栏 -->
-    <nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
-        <div class="container">
-            <div class="navbar-brand">
-              <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
-    <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span><img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav"><span class="color-coffee">Cafe</span>
-</a>
-            </div>
-            <div class="navbar-menu is-active" style="box-shadow: none;">
-                <div class="navbar-end">
-                    <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">
-                        &larr; Back to Home
-                    </a>
-                </div>
+<nav class="navbar is-transparent py-2" style="border-bottom: 1px solid #f0f0f0;">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
+                <span class="color-cn-red">Ch</span><span class="color-coffee inglish-style">inglish</span>
+                <img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav">
+                <span class="color-coffee">Cafe</span>
+            </a>
+        </div>
+        <div class="navbar-menu is-active" style="box-shadow: none;">
+            <div class="navbar-end">
+                <!-- 返回首页 -->
+                <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">
+                    &larr; Home
+                </a>
+                <!-- 🌟 新增：画廊入口 -->
+                <a href="/gallery/" class="navbar-item has-text-grey has-text-weight-semibold">
+                    📸 Gallery
+                </a>
+                <!-- 🌟 新增：English from China 入口 -->
+                <a href="/english-from-china/" class="navbar-item has-text-grey has-text-weight-semibold">
+                    📜 English from China
+                </a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- 列表页主体 -->
     <section class="section section-padding" style="min-height: 70vh;">
@@ -28,13 +39,26 @@
             
             <!-- 动态显示当前点击的标签或分类名称 -->
             <div class="mb-6 border-bottom pb-4" style="border-bottom: 2px solid #eaeaea;">
-                <h1 class="title is-2 has-text-grey-dark">
-                    <span class="has-text-weight-light">Archive:</span> 
-                    <span class="color-coffee chinglish-font">#{{ .Title }}</span>
-                </h1>
-                <p class="subtitle is-6 mt-2 has-text-grey">
-                    Found {{ len .Pages }} entries under this category.
-                </p>
+                <h1 class="title is-2 color-coffee chinglish-font">
+    {{ .Title }}
+</h1>
+                
+                <!-- 🌟 智能读取栏目介绍：如果你在 _index.md 写了 description，就会在这里优雅地展示出来 -->
+                {{ if .Params.description }}
+<p class="subtitle is-5 mt-3 has-text-grey" style="line-height: 1.6; ">
+    {{ .Params.description }}
+</p>
+{{ end }}
+
+{{ if .Content }}
+<div class="content mt-4" style="line-height: 1.7;">
+    {{ .Content }}
+</div>
+{{ end }}
+
+<p class="subtitle is-6 mt-3 has-text-grey">
+    📚 Found <strong>{{ len .Pages }}</strong> entries in this collection.
+</p>
             </div>
 
             <!-- 复用首页的栅格卡片布局来罗列词条 -->
@@ -43,10 +67,14 @@
                 <div class="column is-one-third-desktop is-half-tablet">
                     <div class="box h-100" style="border: 1px solid #eaeaea; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
                         <p class="title is-5 chinglish-font">
-                            <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Params.chinglish_phrase }}</a>
+                            <!-- 🌟 智能读取标题：优先读 Chinglish，如果没有就读 English from China，再没有就读默认 Title -->
+                            <a href="{{ .RelPermalink }}" class="has-text-dark">
+                                {{ .Params.chinglish_phrase | default .Params.english_phrase | default .Title }}
+                            </a>
                         </p>
+                        <!-- 🌟 智能读取中文释义：优先读 meaning，如果没有就读 origin -->
                         <p class="is-size-6 has-text-weight-semibold has-text-grey-dark mt-2" lang="zh-CN">
-                            {{ .Params.chinese_meaning }}
+                            {{ .Params.chinese_meaning | default .Params.chinese_origin }}
                         </p>
                         <p class="mt-2" style="line-height: 1.4;">
                             <span class="is-size-7 has-text-weight-bold has-text-grey-light is-uppercase mr-1" style="letter-spacing: 0.5px;">Means:</span> 
@@ -55,6 +83,14 @@
                     </div>
                 </div>
                 {{ end }}
+                
+                <!-- 🌟 如果该分类下没有文章，给个友好的提示 -->
+                {{ if eq (len .Pages) 0 }}
+                <div class="column is-12 has-text-centered py-6">
+                    <p class="is-size-5 has-text-grey is-italic">No entries found here yet.</p>
+                </div>
+                {{ end }}
+                
             </div>
 
         </div>

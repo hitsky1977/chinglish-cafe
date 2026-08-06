@@ -1,7 +1,8 @@
 ---
 title: "Open Door See Mountain"
 date: 2026-07-24T21:20:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Literal Translation"]
 chinglish_phrase: "Open door see mountain"
 chinese_meaning: "开门见山 (kāi mén jiàn shān)"

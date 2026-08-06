@@ -1,7 +1,8 @@
 ---
 title: "Good Good Study, Day Day Up"
 date: 2026-07-23T18:05:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 featured: true
 tags: ["Chinglish", "Proverb", "Education"]
 chinglish_phrase: "Good good study, day day up"

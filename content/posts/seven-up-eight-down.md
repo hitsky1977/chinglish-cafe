@@ -1,7 +1,8 @@
 ---
 title: "Seven Up Eight Down"
 date: 2026-07-24T20:50:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Numbers", "Funny"]
 chinglish_phrase: "Seven up eight down"
 chinese_meaning: "七上八下 (qī shàng bā xià) / 乱七八糟 (often confused)"

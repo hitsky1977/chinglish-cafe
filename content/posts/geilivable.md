@@ -1,7 +1,8 @@
 ---
 title: "Geilivable"
 date: 2026-07-23T19:20:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Portmanteau", "Slang"]
 chinglish_phrase: "Geilivable / Ungelivable"
 chinese_meaning: "给力 / 不给力 (gěi lì / bù gěi lì)"

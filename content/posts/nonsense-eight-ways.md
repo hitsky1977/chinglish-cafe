@@ -1,7 +1,8 @@
 ---
 title: "Nonsense Eight Ways"
 date: 2026-07-24T22:00:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Numbers"]
 chinglish_phrase: "Nonsense eight ways"
 chinese_meaning: "胡说八道 (hú shuō bā dào)"

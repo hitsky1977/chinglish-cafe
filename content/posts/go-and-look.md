@@ -4,7 +4,8 @@ chinglish_phrase: "Go and look!"
 chinese_meaning: "走着瞧 (Zǒu zhe qiáo)"
 native_expression: "Just you wait and see! / We'll see about that."
 example_sentence: "You think you can steal my clients and get away with it? Go and look!"
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Attitude", "Literal Translation", "Slang"]
 humor_index: 4
 featured: false

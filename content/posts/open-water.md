@@ -1,7 +1,8 @@
 ---
 title: "Open Water"
 date: 2026-07-23T18:25:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Mistranslation", "Food & Drink"]
 chinglish_phrase: "Open water"
 chinese_meaning: "开水 (kāi shuǐ)"

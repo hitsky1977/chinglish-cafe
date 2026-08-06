@@ -1,7 +1,8 @@
 ---
 title: "Niubility"
 date: 2026-07-23T19:15:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Praise", "Slang"]
 chinglish_phrase: "Niubility"
 chinese_meaning: "牛逼 (niú bī)"

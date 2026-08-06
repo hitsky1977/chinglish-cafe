@@ -8,11 +8,11 @@ baseURL = 'https://chinglish.cafe/'
 languageCode = 'en-us' 
 
 # 包含核心关键词的网页标题，Google 搜索结果中显示的大字
-title = 'Chinglish Cafe | The Dictionary of Chinese-English Slang'
+title = 'Chinglish.Cafe | The Ultimate Dictionary of Chinese-English Slang & Translation Fails'
 
 # 首页分页数量，建议是 3 的倍数（因为我们用的是 is-one-third 三列网格布局）
 [pagination]
-  pagerSize = 12
+  pagerSize = 18
 
 # 🌟 新增：开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
@@ -24,7 +24,9 @@ disableHugoGeneratorInject = true
 # 去掉 /posts/ 前缀，让所有词条 URL 保持极简 (如 /you-can-you-up/)
 [permalinks]
   posts = "/:slug/"
-  page = "/:slug/"   # 🌟 必须加上这一行！告诉 Hugo 所有独立单页也按照纯 slug 路径渲染
+  page = "/:slug/" 
+  series = "/:slug/"
+  categories = "/:slug/"
 
 # ==========================================
 # 3. 分类系统映射 (Taxonomies)
@@ -33,6 +35,7 @@ disableHugoGeneratorInject = true
 [taxonomies]
   category = "categories"
   tag = "tags"
+  series = "series"
 
 # ==========================================
 # 4. 站点地图配置 (Sitemap - SEO 专用)
@@ -48,7 +51,7 @@ disableHugoGeneratorInject = true
 # ==========================================
 [params]
   # 网站的全局描述 (Meta Description)，显示在 Google 搜索结果的描述栏
-  description = "Explore the hilarious and fascinating world of Chinglish. Discover literal translations, internet slang, and the cultural context behind them."
+  description = "Explore the hilarious and fascinating world of Chinglish — and the surprising English born from China. Discover literal translations, internet slang, borrowed words, and the cultural stories behind them all."
   
   # 网站作者或运营者信息
   author = "Chinglish Cafe Team"

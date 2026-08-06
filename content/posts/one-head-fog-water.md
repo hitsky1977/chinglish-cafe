@@ -1,7 +1,8 @@
 ---
 title: "One Head Fog Water"
 date: 2026-07-30T17:12:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 featured: false
 tags: ["Chinglish", "Idioms", "Confusion", "Daily Life"]
 chinglish_phrase: "One head fog water"

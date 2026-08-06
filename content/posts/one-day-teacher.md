@@ -1,7 +1,8 @@
 ---
 title: "One day teacher, day day father"
 date: 2026-08-01T23:20:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Proverb", "Respect", "Classic"]
 chinglish_phrase: "One day teacher, day day father"
 chinese_meaning: "一日为师，终身为父 (yī rì wéi shī, zhōng shēn wéi fù)"

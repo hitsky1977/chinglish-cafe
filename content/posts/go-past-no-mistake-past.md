@@ -1,7 +1,8 @@
 ---
 title: "Go past no mistake past"
 date: 2026-08-02T17:18:00+08:00
-category: "Internet Slang"
+category: ["Internet Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Street Slang", "Marketing", "Classic"]
 chinglish_phrase: "Go past no mistake past"
 chinese_meaning: "走过路过，不要错过 (zǒu guò lù guò, bù yào cuò guò)"

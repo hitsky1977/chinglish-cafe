@@ -1,7 +1,8 @@
 ---
 title: "Heart Flower Angry Open"
 date: 2026-07-30T17:11:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 featured: false
 tags: ["Chinglish", "Idioms", "Emotions", "Poetic"]
 chinglish_phrase: "Heart flower angry open"

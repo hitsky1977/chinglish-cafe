@@ -4,7 +4,8 @@ chinglish_phrase: "You don't bird me, I don't bird you!"
 chinese_meaning: "你不鸟我，我也不鸟你 (Nǐ bù niǎo wǒ, wǒ yě bù niǎo nǐ)"
 native_expression: "If you ignore me, I'll ignore you right back / The silent treatment is mutual"
 example_sentence: "Why should I text him first to apologize? You don't bird me, I don't bird you!"
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Literal Translation", "Slang", "Attitude"]
 humor_index: 5
 featured: false

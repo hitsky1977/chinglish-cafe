@@ -1,7 +1,8 @@
 ---
 title: "You Swan, He Frog"
 date: 2026-07-25T12:25:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 featured: true
 tags: ["Chinglish", "Slang", "Animal Metaphor", "Wikipedia Famous"]
 chinglish_phrase: "You swan, he frog"

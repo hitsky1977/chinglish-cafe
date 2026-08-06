@@ -1,7 +1,8 @@
 ---
 title: "Let the Horse Come Here"
 date: 2026-07-23T18:15:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Slang", "Challenge"]
 chinglish_phrase: "Let the horse come here"
 chinese_meaning: "放马过来 (fàng mǎ guò lái)"

@@ -1,7 +1,8 @@
 ---
 title: "No JJ Book"
 date: 2026-07-25T12:20:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Wuxia", "Slang"]
 chinglish_phrase: "No JJ book"
 chinese_meaning: "葵花宝典 / 辟邪剑谱 (Kuíhuā Bǎodiǎn / Pìxié Jiànpǔ)"

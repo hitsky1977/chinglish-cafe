@@ -1,7 +1,8 @@
 ---
 title: "Wind Horse Cow Not Related"
 date: 2026-07-24T21:50:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Animal"]
 chinglish_phrase: "Wind horse cow not related"
 chinese_meaning: "风马牛不相及 (fēng mǎ niú bù xiāng jí)"

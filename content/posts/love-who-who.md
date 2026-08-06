@@ -4,7 +4,8 @@ chinglish_phrase: "Love who who!"
 chinese_meaning: "爱谁谁 (Ài shéi shéi)"
 native_expression: "I couldn't care less / Whatever / Do whatever you want"
 example_sentence: "He is angry about the delay? Love who who! I'm going off work."
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Attitude", "Literal Translation", "Slang"]
 humor_index: 4
 featured: false

@@ -1,7 +1,8 @@
 ---
 title: "No Can Do"
 date: 2026-07-23T17:05:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Slang", "History"]
 chinglish_phrase: "No can do"
 chinese_meaning: "不行 / 做不得 (bù xíng / zuò bu de)"

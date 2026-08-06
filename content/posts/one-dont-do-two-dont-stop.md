@@ -1,7 +1,8 @@
 ---
 title: "One Don't Do, Two Don't Stop"
 date: 2026-07-24T21:30:00+08:00
-category: "Idioms & Slang"
+category: ["Idioms & Slang"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Idiom", "Numbers"]
 chinglish_phrase: "One don't do, two don't stop"
 chinese_meaning: "一不做二不休 (yī bú zuò èr bù xiū)"

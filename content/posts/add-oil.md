@@ -1,7 +1,8 @@
 ---
 title: "Add Oil"
 date: 2026-07-23T16:50:00+08:00
-category: "Daily Life"
+category: ["Daily Life"]
+series: ["Chinglish"]
 tags: ["Chinglish", "Motivation"]
 chinglish_phrase: "Add oil"
 chinese_meaning: "加油 (jiā yóu)"

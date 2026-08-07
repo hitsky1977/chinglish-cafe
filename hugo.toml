@@ -16,7 +16,7 @@ title = 'Chinglish.Cafe | The Ultimate Dictionary of Chinese-English Slang & Tra
 
 # 🌟 新增：开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
-disableHugoGeneratorInject = true
+disablehugogeneratorinject = true
 
 # ==========================================
 # 2. 路由与链接优化 (Permalinks)

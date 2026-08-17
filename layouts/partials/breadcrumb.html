@@ -1,0 +1,65 @@
+{{ if ne .RelPermalink "/" }}
+<section class="section pb-0">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Home</a></li>
+
+                {{ if eq .Kind "term" }}
+                    <li><a href="/{{ .Data.Plural }}/">{{ .Data.Plural | title }}</a></li>
+                    <li class="is-active"><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
+
+                {{ else if eq .Kind "taxonomy" }}
+                    <li class="is-active"><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title | default (humanize .Data.Plural) }}</a></li>
+
+                {{ else if eq .Kind "page" }}
+                    <!-- 单篇文章：优先 series，fallback 到 category -->
+                    {{ if .Params.series }}
+                        {{ $series := "" }}
+                        {{ if reflect.IsSlice .Params.series }}
+                            {{ $series = index .Params.series 0 }}
+                        {{ else }}
+                            {{ $series = .Params.series }}
+                        {{ end }}
+                        {{ if $series }}
+                            {{ $seriesSlug := $series | urlize }}
+                            {{ $seriesPage := .Site.GetPage (printf "/%s" $seriesSlug) }}
+                            {{ if not $seriesPage }}
+                                {{ $seriesPage = .Site.GetPage (printf "/series/%s" $seriesSlug) }}
+                            {{ end }}
+                            {{ if $seriesPage }}
+                                <li><a href="{{ $seriesPage.RelPermalink }}">{{ $series }}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                    
+                    {{ if and .Params.category (not .Params.series) }}
+                        {{ $cat := "" }}
+                        {{ if reflect.IsSlice .Params.category }}
+                            {{ $cat = index .Params.category 0 }}
+                        {{ else }}
+                            {{ $cat = .Params.category }}
+                        {{ end }}
+                        {{ if $cat }}
+                            {{ $catSlug := $cat | urlize }}
+                            {{ $catPage := .Site.GetPage (printf "/categories/%s" $catSlug) }}
+                            {{ if not $catPage }}
+                                {{ $catPage = .Site.GetPage (printf "/%s" $catSlug) }}
+                            {{ end }}
+                            {{ if $catPage }}
+                                <li><a href="{{ $catPage.RelPermalink }}">{{ $cat }}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                    
+                    <li class="is-active"><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
+
+                {{ else }}
+                    <!-- Section 等其他页面 -->
+                    <li class="is-active"><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+    </div>
+</section>
+{{ end }}

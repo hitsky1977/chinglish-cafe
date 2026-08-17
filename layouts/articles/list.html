@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "navbar.html" . }}
+    {{ partial "breadcrumb.html" . }}
+
+    <!-- 文章列表页主体 -->
+    <section class="section section-padding" style="min-height: 70vh;">
+        <div class="container">
+            
+            <!-- 标题区 -->
+            <div class="mb-6 border-bottom pb-4" style="border-bottom: 2px solid #eaeaea;">
+                <h1 class="title is-2 color-coffee chinglish-font">
+                    {{ .Title }}
+                </h1>
+                
+                {{ if .Params.description }}
+                <p class="subtitle is-5 mt-3 has-text-grey" style="line-height: 1.6;">
+                    {{ .Params.description }}
+                </p>
+                {{ end }}
+
+                {{ if .Content }}
+                <div class="content mt-4" style="line-height: 1.7;">
+                    {{ .Content }}
+                </div>
+                {{ end }}
+
+                <p class="subtitle is-6 mt-3 has-text-grey">
+                    📝 <strong>{{ len .Pages }}</strong> stories in this collection.
+                </p>
+            </div>
+
+            <!-- 文章卡片列表：两列布局 -->
+            <div class="columns is-multiline">
+                {{ range .Pages.ByDate.Reverse }}
+                <div class="column is-half-desktop is-half-tablet">
+                    <div class="box h-100" style="border: 1px solid #eaeaea; box-shadow: 0 2px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <p class="is-size-7 has-text-grey-light mb-2">
+                                📅 {{ .Date.Format "Jan 02, 2006" }} 
+                                {{ if .ReadingTime }}&nbsp;·&nbsp;⏱️ {{ .ReadingTime }} min read{{ end }}
+                            </p>
+                            <p class="title is-4 chinglish-font mb-3">
+                                <a href="{{ .RelPermalink }}" class="has-text-dark">{{ .Title }}</a>
+                            </p>
+                            <!-- 概要：优先读取 frontmatter 中的 summary，其次自动提取 -->
+                            <p class="is-size-6 has-text-grey-dark" style="line-height: 1.6;">
+                                {{ .Params.summary | default (.Summary | plainify | truncate 180) }}
+                            </p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="{{ .RelPermalink }}" class="has-text-weight-bold has-text-danger is-size-6">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                
+                <!-- 无文章提示 -->
+                {{ if eq (len .Pages) 0 }}
+                <div class="column is-12 has-text-centered py-6">
+                    <p class="is-size-5 has-text-grey is-italic">No stories found here yet.</p>
+                </div>
+                {{ end }}
+            </div>
+
+        </div>
+    </section>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>

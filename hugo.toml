@@ -10,9 +10,6 @@ languageCode = 'en-us'
 # 包含核心关键词的网页标题，Google 搜索结果中显示的大字
 title = 'Chinglish.Cafe | The Ultimate Dictionary of Chinese-English Slang & Translation Fails'
 
-# 首页分页数量，建议是 3 的倍数（因为我们用的是 is-one-third 三列网格布局）
-[pagination]
-  pagerSize = 18
 
 # 🌟 新增：开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
@@ -27,6 +24,7 @@ disablehugogeneratorinject = true
   page = "/:slug/" 
   series = "/:slug/"
   categories = "/:slug/"
+  articles = "/:slug/"
 
 # ==========================================
 # 3. 分类系统映射 (Taxonomies)

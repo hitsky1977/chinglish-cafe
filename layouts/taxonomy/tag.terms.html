@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "head.html" . }}
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+{{ partial "navbar.html" . }}
+    {{ partial "breadcrumb.html" . }}
+
+    <section class="section section-padding" style="min-height: 70vh;">
+        <div class="container">
+            <div class="mb-6 border-bottom pb-4" style="border-bottom: 2px solid #eaeaea;">
+                <h1 class="title is-2 color-coffee chinglish-font">All Tags</h1>
+                <p class="subtitle is-5 mt-3 has-text-grey">
+                    📚 <strong>{{ len .Pages }}</strong> tags in total.
+                </p>
+            </div>
+
+            <div class="tags are-large">
+                {{ range .Pages }}
+                <a href="{{ .RelPermalink }}" class="tag is-light is-medium" style="margin: 0.3rem;">
+                    {{ .Title }} <span class="has-text-grey ml-1">({{ len .Pages }})</span>
+                </a>
+                {{ end }}
+            </div>
+
+        </div>
+    </section>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>

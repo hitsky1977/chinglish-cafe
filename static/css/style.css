@@ -85,3 +85,11 @@ body {
 /* 🛠️ 优化点 2：强制覆盖 Bulma 默认的灰色，加深字体颜色，解决 PageSpeed 提示的对比度警告 */
 .has-text-grey-light { color: #666666 !important; }
 .has-text-grey { color: #444444 !important; }
+
+.breadcrumb li + li::before {
+    content: "›";
+    color: #c8a97e;
+    padding: 0 0.5rem;
+}
+.breadcrumb a { color: #5C4033; }
+.breadcrumb li.is-active a { color: #999; cursor: default; }

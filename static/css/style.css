@@ -42,12 +42,12 @@ body {
 
 /* 详情页/列表页导航栏专用的剪纸图标（字号较小，做精细化控制） */
 .logo-icon-dot-nav {
-    height: 18px; /* 直接写死一个精致的小像素高度，在小标题里雷打不动 */
+    height: 14px; /* 直接写死一个精致的小像素高度，在小标题里雷打不动 */
     width: auto;
     vertical-align: middle; 
     margin: 0 8px; 
     position: relative;
-    top: -1px; 
+    top: 3px; 
     display: inline-block;
 }
 

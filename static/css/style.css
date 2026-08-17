@@ -21,11 +21,10 @@ body {
 .color-cn-red { color: #DE2910; } 
 .color-coffee { color: #5C4033; } 
 
-/* 确保 Logo 内部的单词间距紧凑自然 */
-.navbar-item, .hero-body h1 {
-    word-spacing: -0.15em; /* 稍微收紧单词间的默认间距 */
+ .navbar-brand > a {
+    display: inline-flex;
+    gap: 0;
 }
-
 /* ==========================================================================
    3. 剪纸点缀图标样式（区分首页大标题与子页导航栏）
    ========================================================================== */
@@ -46,9 +45,9 @@ body {
     height: 18px; /* 直接写死一个精致的小像素高度，在小标题里雷打不动 */
     width: auto;
     vertical-align: middle; 
-    margin: 0; 
+    margin: 0 8px; 
     position: relative;
-    top: -2px; 
+    top: -1px; 
     display: inline-block;
 }
 

@@ -38,9 +38,26 @@
                 {{ end }}
             </header>
 
-            <!-- 文章正文 -->
+                       <!-- 文章正文：集成自动站内链接 -->
+            {{ $currentRel := .RelPermalink }}
+            {{ $currentAbs := .Permalink }}
+            {{ $content := .Content }}
+            
+            {{ range $keyword, $url := site.Data.keywords }}
+                {{ if and (ne $url $currentRel) (ne $url $currentAbs) }}
+                    {{ $regex := printf `(?i)(?s)^(.*?)(>[^<]*?)(%s)([^<]*<)(.*)$` $keyword }}
+                    {{ $replacement := "" }}
+                    {{ if or (hasPrefix $url "http://") (hasPrefix $url "https://") }}
+                        {{ $replacement = printf `${1}${2}<a href="%s" class="has-text-weight-medium" target="_blank" rel="noopener noreferrer" title="External: %s" style="color: #DE2910; border-bottom: 1px dashed #DE2910; padding-bottom: 1px;">${3} ↗</a>${4}${5}` $url $keyword }}
+                    {{ else }}
+                        {{ $replacement = printf `${1}${2}<a href="%s" class="has-text-weight-medium" title="Read more about %s" style="color: #DE2910; border-bottom: 1px dashed #DE2910; padding-bottom: 1px;">${3}</a>${4}${5}` $url $keyword }}
+                    {{ end }}
+                    {{ $content = replaceRE $regex $replacement $content }}
+                {{ end }}
+            {{ end }}
+            
             <div class="content is-medium has-text-grey-dark" style="line-height: 1.8;">
-                {{ .Content }}
+                {{ $content | safeHTML }}
             </div>
 
             <!-- 前后文章导航 -->

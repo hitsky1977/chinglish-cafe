@@ -1,0 +1,67 @@
+# ==========================================
+# 原则：
+# 1. 只收录专有名词和特定短语（不会出现在普通英语语境中）
+# 2. 淘汰 2-4 个字母的短词（Zen, Qi, Tao, Li, Jin, Do, No, On 等）
+# 3. 常见英文单词即使是中国起源（如 Tea），也不自动链接，避免误伤
+# 4. 多词短语天然安全（几乎不会误匹配）
+# ==========================================
+
+# Chinglish 核心短语（多词 = 安全）
+"Long Time No See": "/long-time-no-see/"
+"No Can Do": "/no-can-do/"
+"Add Oil": "/add-oil/"
+"Paper Tiger": "/paper-tiger/"
+"Good Good Study, Day Day Up": "/good-good-study-day-day-up/"
+"No Zuo No Die": "/no-zuo-no-die/"
+"You Can You Up": "/you-can-you-up-no-can-no-bb/"
+"Smilence": "/smilence/"
+"Niubility": "/niubility/"
+"People Mountain People Sea": "/people-mountain-people-sea/"
+"Lose Face": "/lose-face/"
+"Horse Horse Tiger Tiger": "/horse-horse-tiger-tiger/"
+
+# English from China — 食物类（专有名词，相对安全）
+"Chow Mein": "/chow-mein/"
+"Dim Sum": "/dim-sum/"
+"Jiaozi": "/jiaozi/"
+"Tofu": "/tofu/"
+"Oolong": "/oolong/"
+"Bubble Tea": "/boba/"
+"Bok Choy": "/bok-choy/"
+"Wonton": "/wonton/"
+"Congee": "/congee/"
+"Mooncake": "/mooncake/"
+"Chop Suey": "/chop-suey/"
+"Char Siu": "/char-siu/"
+"Kumquat": "/kumquat/"
+"Ketchup": "/ketchup/"
+
+# English from China — 文化/武术（专有名词，相对安全）
+"Kung Fu": "/kung-fu/"
+"Tai Chi": "/tai-chi/"
+"Wuxia": "/wuxia/"
+"Feng Shui": "/feng-shui/"
+"Yin Yang": "/yin-yang/"
+"Guanxi": "/guanxi/"
+"Loong": "/loong/"
+"Mahjong": "/mahjong/"
+"Qipao": "/qipao/"
+"Cheongsam": "/cheongsam/"
+"Tuhao": "/tuhao/"
+"Hukou": "/hukou/"
+"Hongbao": "/hongbao/"
+"Hutong": "/hutong/"
+"Typhoon": "/typhoon/"
+
+# English from China — 历史/社会（专有名词）
+"Kowtow": "/kowtow/"
+"Iron Rice Bowl": "/iron-rice-bowl/"
+"Barefoot Doctor": "/barefoot-doctor/"
+"Shanghaied": "/shanghaied/"
+
+# 长文章（Deep Dives）
+"Oxford English Dictionary": "/oxford/"
+"Chinglish History": "/history-of-chinglish/"
+2026/8/18"Cantonese Food": "/cantonese-dominates-chinese-food-english/"
+"China Porcelain": "/from-changnan-to-cabinet-how-china-became-china/"
+"Qipao vs Cheongsam": "/two-names-one-dress-qipao-vs-cheongsam/"

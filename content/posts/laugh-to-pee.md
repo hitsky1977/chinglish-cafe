@@ -15,8 +15,6 @@ example_sentence: "Did you see that new meme on Twitter? I literally laugh to pe
 ## 📖 Origin Story
 Chinese internet culture loves extreme hyperbole. When something is moderately funny, you laugh; when it is hysterically funny, you "笑尿了" (laugh until you urinate). "Laugh to pee" is the literal, unapologetic translation of this bodily reaction.
 
----
-
 ## 🤓 Analysis & Usage
 While standard English has similar hyperbolic expressions (like "peeing my pants laughing"), the Chinglish version reduces it to a blunt, three-word infinitive structure. It is grammatically incorrect but maximally effective. It delivers the comedic punchline with zero wasted words.
 

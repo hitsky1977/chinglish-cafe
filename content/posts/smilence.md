@@ -15,7 +15,6 @@ example_sentence: "When the reporter asked about the secret project, the CEO jus
 ## 📖 Origin Story
 "Smilence" is a genius portmanteau (a blend of two words) created by Chinese netizens. It seamlessly fuses the English words "Smile" and "Silence" to translate the ancient Chinese idiom "笑而不语" (to smile without speaking). 
 
----
 
 ## 🤓 Analysis & Usage
 This word is so perfectly constructed that native English speakers can instantly guess its meaning without any explanation. It captures a very specific, nuanced social mood: a polite, slightly mysterious, or cynical silence when you know the truth but choose not to expose it. It proves that Chinglish isn't just about bad grammar—it can actually introduce elegant new vocabulary into the English language.

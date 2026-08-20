@@ -15,8 +15,6 @@ example_sentence: "He couldn't admit he was wrong because he didn't want to lose
 ## 📖 Origin Story
 "Lose face" is one of the earliest and most profound examples of Chinese culture seamlessly integrating into the English language. It first appeared in the late 19th century, coined by British expats living in China. It is a literal, word-for-word translation of the Chinese phrase "丢脸" (diū liǎn), used to describe the complex Chinese social concept of *mianzi* (social standing and prestige).
 
----
-
 ## 🤓 Analysis & Usage
 Before this phrase was introduced, traditional English lacked a concise idiom that perfectly captured the subtle psychological state of "losing social prestige due to public humiliation." 
 

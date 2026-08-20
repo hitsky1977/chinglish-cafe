@@ -20,8 +20,6 @@ The irony is that poodles were indeed associated with European aristocracy. Fren
 
 The English word "poodle," meanwhile, comes from the German "Pudel," meaning "to splash in water." The name refers to the breed's original job as a water retriever. There is nothing aristocratic about it. One language named the dog after its social connections; the other named it after its swimming habit.
 
----
-
 ## 🤓 Analysis & Usage
 
 In standard English, if you want to talk about this breed, you say "poodle." You might specify "toy poodle," "miniature poodle," or "standard poodle," but the word remains the same. There is no implication that the dog has a personal assistant or a LinkedIn profile.
@@ -29,8 +27,6 @@ In standard English, if you want to talk about this breed, you say "poodle." You
 The Chinglish translation "VIP dog" performs a spectacular act of social promotion. It takes a perfectly ordinary pet and rebrands it as a member of an exclusive club. To a native English speaker, "VIP dog" sounds like a service animal with airport lounge access — or perhaps a very good boy who gets to skip the line at the vet.
 
 The humor lies in the unexpected dignity. Dogs do not know they are VIPs. They eat garbage and chase squirrels. But "VIP dog" insists on treating them like minor celebrities. It is the linguistic equivalent of putting a dog in a tuxedo and introducing it as "Sir Barksalot, Duke of Fetchington."
-
----
 
 ## ✍️ Usage in Context
 

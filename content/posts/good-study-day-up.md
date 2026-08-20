@@ -19,8 +19,6 @@ This legendary phrase originates from a famous motivational quote by Chairman Ma
 
 The Chinglish version is a masterpiece of literal translation. "Good good" translates "好好" (do something properly/well), "study" is "学习", "day day" translates "天天" (every day), and "up" is "向上" (upward/progress). 
 
----
-
 ## 🤓 Analysis & Usage
 Grammatically, it is absolute chaos. Using "good good" as an adverb and "day day" as an expression of frequency sounds like baby talk in English. However, the rhythm is incredibly catchy. Over the past few decades, this phrase has become a beloved cultural meme, often printed on T-shirts, school notebooks, and coffee mugs as a playful, nostalgic joke.
 

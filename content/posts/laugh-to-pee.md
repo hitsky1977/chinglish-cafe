@@ -19,3 +19,14 @@ Chinese internet culture loves extreme hyperbole. When something is moderately f
 
 ## 🤓 Analysis & Usage
 While standard English has similar hyperbolic expressions (like "peeing my pants laughing"), the Chinglish version reduces it to a blunt, three-word infinitive structure. It is grammatically incorrect but maximally effective. It delivers the comedic punchline with zero wasted words.
+
+## ✍️ Usage in Context
+
+This phrase thrives in group chats, comment sections, and any situation where a meme, video, or joke has achieved maximum hilarity. It is the Chinese internet equivalent of "I'm deceased" or "I can't breathe."
+
+**Example Conversation:**
+
+* **A:** *(Sends a video of a cat attempting to jump onto a table and failing spectacularly)*
+* **B:** "OMG I literally laugh to pee. Send help."
+* **A:** "You haven't even seen the part where it tries again and knocks over a vase."
+* **B:** "STOP. My bladder cannot handle this."

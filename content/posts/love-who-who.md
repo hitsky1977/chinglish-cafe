@@ -18,3 +18,16 @@ This is a direct word-for-word translation of the Northern Chinese slang "爱谁
 
 ## 😂 Why It’s Hilarious
 Instead of the slightly passive-aggressive English "whatever," saying "Love who who" sounds like a bizarre philosophical statement about universal love, which makes the contrast with its actual meaning (I don't give a damn) incredibly funny.
+
+## ✍️ Usage in Context
+
+This phrase is the ultimate verbal mic drop. It is deployed when someone tries to impose their opinion, guilt-trip you, or expects you to care about something you absolutely do not care about. It is the linguistic equivalent of shrugging so hard your shoulders touch your ears.
+
+**Example Conversation:**
+
+* **A:** "Your mother called. She says you should come home for dinner this weekend."
+* **B:** "Tell her I'm busy."
+* **A:** "She said if you don't come, she'll tell everyone you still sleep with a stuffed animal."
+* **B:** "Love who who. She can tell the whole neighborhood. I'm not going."
+* **A:** "You are a terrible son."
+* **B:** "Love who who."

@@ -3,6 +3,7 @@ title: "Copyright & Terms"
 date: 2026-07-24T20:20:00+08:00
 description: "Information regarding fair use, user-generated content, and terms of service."
 type: "page"
+noindex: true
 ---
 
 ### 1. Purpose and Fair Use

@@ -3,6 +3,7 @@ title: "Submit a Phrase"
 date: 2026-07-24T20:00:00+08:00
 description: "Help us grow! Contribute your favorite Chinglish mistranslations or internet slang."
 type: "page"
+noindex: true
 ---
 
 Did you spot a ridiculously funny sign at a restaurant? Or maybe you just learned a new piece of Chinese internet slang that blew your mind? 

@@ -19,6 +19,9 @@
 <title>
     {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 </title>
+{{ if .Params.noindex }}
+<meta name="robots" content="noindex, nofollow">
+{{ end }}
 <!-- 告诉搜索引擎，当前页面的唯一绝对权威地址是谁 -->
 <link rel="canonical" href="{{ .Permalink }}">
 <!-- 统一调用顶部计算好的变量 -->

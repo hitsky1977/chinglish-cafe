@@ -3,6 +3,7 @@ title: "Privacy Policy"
 date: 2026-07-24T20:20:00+08:00
 description: "How we handle your data and privacy at Chinglish.Cafe."
 type: "page"
+noindex: true
 ---
 
 Welcome to **Chinglish.Cafe**. Your privacy is critically important to us.

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+  <style>
+    .search-box {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .search-input {
+      border: 2px solid #5C4033;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: box-shadow 0.2s ease;
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 4px 15px rgba(92, 64, 51, 0.15);
+    }
+    .search-stats {
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      margin: 1rem 0 2rem;
+    }
+    .search-result {
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .search-result:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border-color: #e0d5cc;
+    }
+    .search-result-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #5C4033;
+      margin-bottom: 0.4rem;
+    }
+    .search-result-title a {
+      color: #5C4033;
+      text-decoration: none;
+    }
+    .search-result-title a:hover {
+      text-decoration: underline;
+    }
+    .search-result-meta {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .search-result-snippet {
+      color: #444;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .search-highlight {
+      background-color: rgba(222, 41, 16, 0.12);
+      font-weight: 600;
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: #888;
+    }
+    .no-results-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .search-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: #f5f0eb;
+      color: #5C4033;
+      margin-right: 0.4rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  {{ partial "navbar.html" . }}
+
+  <main>
+    <!-- 搜索头部 -->
+    <section class="hero is-small hero-pattern">
+      <div class="hero-body has-text-centered py-6">
+        <h1 class="title is-2 has-text-weight-bold color-coffee">
+          🔍 Search Chinglish.Cafe
+        </h1>
+        <p class="subtitle is-5 has-text-grey mt-2">
+          Find phrases, slang, and cultural stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-padding">
+      <div class="container">
+        <!-- 搜索输入框 -->
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Type a phrase, meaning, or keyword..." 
+            autocomplete="off"
+          >
+          <div class="search-stats" id="search-stats"></div>
+        </div>
+
+        <!-- 搜索结果容器 -->
+        <div id="search-results"></div>
+      </div>
+    </section>
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <!-- Fuse.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+  
+  <script>
+    (function() {
+      const searchInput = document.getElementById('search-input');
+      const resultsContainer = document.getElementById('search-results');
+      const statsContainer = document.getElementById('search-stats');
+      
+      let fuse;
+      let pages = [];
+      let fuseIndex;
+
+      // 1. 加载搜索索引
+      fetch('/index.json')
+        .then(res => res.json())
+        .then(data => {
+          pages = data;
+          
+          // 2. 配置 Fuse.js
+          const options = {
+            keys: [
+              { name: 'title', weight: 0.3 },
+              { name: 'chinglish_phrase', weight: 0.3 },
+              { name: 'chinese_meaning', weight: 0.15 },
+              { name: 'native_expression', weight: 0.15 },
+              { name: 'content', weight: 0.05 },
+              { name: 'tags', weight: 0.03 },
+              { name: 'category', weight: 0.02 }
+            ],
+            threshold: 0.35,
+            includeScore: true,
+            includeMatches: true,
+            ignoreLocation: true,
+            minMatchCharLength: 2
+          };
+          
+          fuse = new Fuse(pages, options);
+          
+          // 3. 检查 URL 是否有查询参数 ?q=xxx
+          const urlParams = new URLSearchParams(window.location.search);
+          const query = urlParams.get('q');
+          if (query) {
+            searchInput.value = query;
+            performSearch(query);
+          }
+        })
+        .catch(err => {
+          console.error('Failed to load search index:', err);
+          resultsContainer.innerHTML = '<div class="no-results">⚠️ Failed to load search data. Please try again later.</div>';
+        });
+
+      // 4. 监听输入（防抖）
+      let debounceTimer;
+      searchInput.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        const query = e.target.value.trim();
+        
+        debounceTimer = setTimeout(() => {
+          if (query.length === 0) {
+            resultsContainer.innerHTML = '';
+            statsContainer.textContent = '';
+            return;
+          }
+          performSearch(query);
+        }, 150);
+      });
+
+      function performSearch(query) {
+        if (!fuse) return;
+        
+        const results = fuse.search(query);
+        
+        // 更新统计
+        if (results.length > 0) {
+          statsContainer.textContent = `${results.length} result${results.length > 1 ? 's' : ''} for "${query}"`;
+        } else {
+          statsContainer.textContent = '';
+        }
+        
+        // 渲染结果
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `
+            <div class="no-results">
+              <div class="no-results-icon">😕</div>
+              <p class="is-size-5">No results found for "<strong>${escapeHtml(query)}</strong>"</p>
+              <p class="mt-2">Try searching with different keywords or check your spelling.</p>
+            </div>
+          `;
+          return;
+        }
+
+        const html = results.map(result => {
+          const page = result.item;
+          const score = result.score;
+          
+          // 生成摘要：优先展示匹配到的片段
+          let snippet = page.summary || page.content || '';
+          if (snippet.length > 200) {
+            snippet = snippet.substring(0, 200) + '...';
+          }
+          
+          // 高亮显示标签
+          const tagsHtml = (page.tags && page.tags.length > 0)
+            ? page.tags.map(t => `<span class="search-tag">${escapeHtml(t)}</span>`).join('')
+            : '';
+          
+          const categoryHtml = page.category
+            ? `<span class="search-tag" style="background:#DE2910; color:#fff;">${escapeHtml(Array.isArray(page.category) ? page.category[0] : page.category)}</span>`
+            : '';
+
+          // 决定显示的主标题
+          const displayTitle = page.chinglish_phrase || page.title;
+          const subtitle = page.chinglish_phrase && page.chinglish_phrase !== page.title
+            ? `<div style="font-size:0.9rem; color:#666; margin-top:0.2rem;">${escapeHtml(page.title)}</div>`
+            : '';
+
+          return `
+            <div class="search-result">
+              <div class="search-result-title">
+                <a href="${escapeHtml(page.permalink)}">${escapeHtml(displayTitle)}</a>
+              </div>
+              ${subtitle}
+              <div class="search-result-meta">
+                ${categoryHtml}${tagsHtml}
+              </div>
+              <div class="search-result-snippet">${escapeHtml(snippet)}</div>
+            </div>
+          `;
+        }).join('');
+
+        resultsContainer.innerHTML = html;
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+    })();
+  </script>
+</body>
+</html>

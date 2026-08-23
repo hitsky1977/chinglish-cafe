@@ -21,7 +21,33 @@
             <p class="subtitle is-size-5 mt-3 has-text-grey mx-auto" style="max-width: 1080px; line-height: 1.6;">
                 {{ .Site.Params.description }}
             </p>
-            
+          <!-- 🔍 首页搜索框 (使用 Bulma 原生 has-addons 完美解决错位缝隙) -->
+            <div class="mt-5 mx-auto" style="max-width: 560px;">
+                <form id="home-search-form" action="/search/" method="get">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input 
+                                type="text" 
+                                name="q" 
+                                id="home-search-input"
+                                class="input is-medium is-rounded" 
+                                placeholder="Search a Chinglish phrase, meaning, or keyword..." 
+                                autocomplete="off"
+                                style="border: 2px solid #5C4033; border-right: none; padding-left: 1.5rem; box-shadow: none;"
+                            >
+                        </div>
+                        <div class="control">
+                            <button 
+                                type="submit" 
+                                class="button is-medium is-rounded" 
+                                style="background-color: #5C4033; color: #fff; border: 2px solid #5C4033; padding-left: 1.5rem; padding-right: 1.5rem;"
+                            >
+                                🔍
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <!-- 🌟 升级版：多维度统计数据栏 -->
             <div class="tags are-medium is-centered mt-5">
     

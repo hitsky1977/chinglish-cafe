@@ -56,4 +56,14 @@ disablehugogeneratorinject = true
   
   # 🌟 修正：默认的社交分享预览图 (匹配你 static/images/ 里的真实文件名)
   defaultSocialImage = "/images/default-cover.webp"
-  
+
+# ==========================================
+# 6. 输出格式配置（Fuse.js 搜索索引）
+# ==========================================
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[outputFormats.JSON]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = true

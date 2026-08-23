@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+  <style>
+    .search-box {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .search-input {
+      border: 2px solid #5C4033;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: box-shadow 0.2s ease;
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 4px 15px rgba(92, 64, 51, 0.15);
+    }
+    .search-stats {
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      margin: 1rem 0 2rem;
+    }
+    .search-result {
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .search-result:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border-color: #e0d5cc;
+    }
+    .search-result-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #5C4033;
+      margin-bottom: 0.4rem;
+    }
+    .search-result-title a {
+      color: #5C4033;
+      text-decoration: none;
+    }
+    .search-result-title a:hover {
+      text-decoration: underline;
+    }
+    .search-result-meta {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .search-result-snippet {
+      color: #444;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .search-highlight {
+      background-color: rgba(222, 41, 16, 0.12);
+      font-weight: 600;
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: #888;
+    }
+    .no-results-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .search-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: #f5f0eb;
+      color: #5C4033;
+      margin-right: 0.4rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  {{ partial "navbar.html" . }}
+
+  <main>
+    <!-- 搜索头部 -->
+    <section class="hero is-small hero-pattern">
+      <div class="hero-body has-text-centered py-6">
+        <h1 class="title is-2 has-text-weight-bold color-coffee">
+          🔍 Search Chinglish.Cafe
+        </h1>
+        <p class="subtitle is-5 has-text-grey mt-2">
+          Find phrases, slang, and cultural stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-padding">
+      <div class="container">
+        <!-- 搜索输入框 -->
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Type a phrase, meaning, or keyword..." 
+            autocomplete="off"
+          >
+          <div class="search-stats" id="search-stats"></div>
+        </div>
+
+        <!-- 搜索结果容器 -->
+        <div id="search-results"></div>
+      </div>
+    </section>
+  </main>
+
+  {{ partial "footer.html" . }}
+
+    <!-- Fuse.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.5.0/fuse.min.mjs"></script>
+  
+  <script>
+   (function() {
+  const searchInput = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('search-results');
+  const statsContainer = document.getElementById('search-stats');
+  
+  let fuse;
+  let pages = [];
+
+  // 1. 加载搜索索引
+  fetch('/index.json')
+    .then(res => res.json())
+    .then(data => {
+      pages = data;
+      
+      // 2. 配置 Fuse.js
+      const options = {
+        keys: [
+          { name: 'title', weight: 0.3 },
+          { name: 'chinglish_phrase', weight: 0.3 },
+          { name: 'chinese_meaning', weight: 0.15 },
+          { name: 'native_expression', weight: 0.15 },
+          { name: 'content', weight: 0.05 },
+          { name: 'tags', weight: 0.03 },
+          { name: 'category', weight: 0.02 }
+        ],
+        threshold: 0.35,
+        includeScore: true,
+        includeMatches: true, // 这是高亮的关键
+        ignoreLocation: true,
+        minMatchCharLength: 2
+      };
+      
+      fuse = new Fuse(pages, options);
+      
+      // 3. 检查 URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      if (query) {
+        searchInput.value = query;
+        performSearch(query);
+      }
+    })
+    .catch(err => {
+      console.error('Failed to load search index:', err);
+      resultsContainer.innerHTML = '<div class="no-results">⚠️ Failed to load search data. Please try again later.</div>';
+    });
+
+  // 4. 监听输入（防抖）
+  let debounceTimer;
+  searchInput.addEventListener('input', function(e) {
+    clearTimeout(debounceTimer);
+    const query = e.target.value.trim();
+    
+    debounceTimer = setTimeout(() => {
+      if (query.length === 0) {
+        resultsContainer.innerHTML = '';
+        statsContainer.textContent = '';
+        return;
+      }
+      performSearch(query);
+    }, 150);
+  });
+
+  function performSearch(query) {
+    if (!fuse) return;
+    
+    const results = fuse.search(query);
+    
+    // 更新统计
+    if (results.length > 0) {
+      statsContainer.textContent = `${results.length} result${results.length > 1 ? 's' : ''} for "${query}"`;
+    } else {
+      statsContainer.textContent = '';
+    }
+    
+    // 渲染结果
+    if (results.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="no-results">
+          <div class="no-results-icon">😕</div>
+          <p class="is-size-5">No results found for "<strong>${escapeHtml(query)}</strong>"</p>
+          <p class="mt-2">Try searching with different keywords or check your spelling.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const html = results.map(result => {
+      const page = result.item;
+      const matches = result.matches;
+      
+      // 提取和高亮摘要（最大长度200，并围绕匹配词智能截断）
+      const snippetSource = page.summary || page.content || '';
+      const snippetKey = page.summary ? 'summary' : 'content';
+      const highlightedSnippet = highlightText(snippetSource, matches, snippetKey, 200);
+      
+      // 高亮标签和分类（标签和分类通常不长，可以直接用 escapeHtml，若需要高亮也可套用函数）
+      const tagsHtml = (page.tags && page.tags.length > 0)
+        ? page.tags.map(t => `<span class="search-tag">${escapeHtml(t)}</span>`).join('')
+        : '';
+      
+      const categoryHtml = page.category
+        ? `<span class="search-tag" style="background:#DE2910; color:#fff;">${escapeHtml(Array.isArray(page.category) ? page.category[0] : page.category)}</span>`
+        : '';
+
+      // 高亮主标题和副标题
+      const displayTitleSource = page.chinglish_phrase || page.title;
+      const displayTitleKey = page.chinglish_phrase ? 'chinglish_phrase' : 'title';
+      const highlightedTitle = highlightText(displayTitleSource, matches, displayTitleKey);
+
+      const subtitle = page.chinglish_phrase && page.chinglish_phrase !== page.title
+        ? `<div style="font-size:0.9rem; color:#666; margin-top:0.2rem;">${highlightText(page.title, matches, 'title')}</div>`
+        : '';
+
+      return `
+        <div class="search-result">
+          <div class="search-result-title">
+            <a href="${escapeHtml(page.permalink)}">${highlightedTitle}</a>
+          </div>
+          ${subtitle}
+          <div class="search-result-meta">
+            ${categoryHtml}${tagsHtml}
+          </div>
+          <div class="search-result-snippet">${highlightedSnippet}</div>
+        </div>
+      `;
+    }).join('');
+
+    resultsContainer.innerHTML = html;
+  }
+
+  // --- 核心辅助函数：结合 XSS 过滤、智能截断与关键词高亮 ---
+  function highlightText(text, matches, keyName, maxLength = 0) {
+    if (!text) return '';
+    const strText = String(text);
+    
+    // 查找该字段是否有匹配的索引
+    const match = matches ? matches.find(m => m.key === keyName) : null;
+    
+    // 如果没有匹配，走普通转义及截断逻辑
+    if (!match) {
+      if (maxLength > 0 && strText.length > maxLength) {
+        return escapeHtml(strText.substring(0, maxLength)) + '...';
+      }
+      return escapeHtml(strText);
+    }
+
+    // 确定展示窗口（确保高亮词位于摘要可见范围内）
+    let startOffset = 0;
+    let endOffset = strText.length;
+    if (maxLength > 0 && strText.length > maxLength) {
+      const firstMatchStart = match.indices[0][0];
+      // 围绕第一个匹配词向前偏移
+      startOffset = Math.max(0, firstMatchStart - Math.floor(maxLength / 2));
+      endOffset = startOffset + maxLength;
+      // 越界修正
+      if (endOffset > strText.length) {
+        endOffset = strText.length;
+        startOffset = Math.max(0, strText.length - maxLength);
+      }
+    }
+
+    let resultHtml = '';
+    let lastIndex = startOffset;
+
+    // 遍历 Fuse.js 返回的 [[start, end], ...] 索引进行标签包裹
+    match.indices.forEach(([start, end]) => {
+      // 过滤掉不在当前截取窗口内的高亮索引
+      if (end < startOffset || start >= endOffset) return;
+      
+      const clampStart = Math.max(start, startOffset);
+      const clampEnd = Math.min(end, endOffset - 1);
+
+      // 追加高亮词前面的未匹配文本（需转义）
+      resultHtml += escapeHtml(strText.substring(lastIndex, clampStart));
+      
+      // 使用 CSS 类 .search-highlight 包装匹配的文本（需转义）
+      const matchText = strText.substring(clampStart, clampEnd + 1);
+      resultHtml += `<span class="search-highlight">${escapeHtml(matchText)}</span>`;
+      
+      lastIndex = clampEnd + 1;
+    });
+
+    // 追加尾部剩余文本
+    if (lastIndex < endOffset) {
+      resultHtml += escapeHtml(strText.substring(lastIndex, endOffset));
+    }
+
+    const prefix = startOffset > 0 ? '...' : '';
+    const suffix = endOffset < strText.length ? '...' : '';
+    
+    return prefix + resultHtml + suffix;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+})();
+  </script>
+</body>
+</html>

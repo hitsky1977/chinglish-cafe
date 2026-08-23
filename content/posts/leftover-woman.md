@@ -1,7 +1,7 @@
 ---
 title: "Leftover Woman"
 date: 2026-08-23T11:00:00+08:00
-category: ["Culture"]
+category: ["Daily Life"]
 series: ["Chinglish"]
 tags: ["Chinglish", "Society", "Controversial"]
 chinglish_phrase: "Leftover woman"

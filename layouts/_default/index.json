@@ -4,15 +4,10 @@
   {{- $item := dict 
     "title" .Title
     "permalink" .RelPermalink
-    "summary" (.Summary | plainify | htmlUnescape)
-    "content" (.Plain | htmlUnescape | replaceRE "\\s+" " " | truncate 300)
     "chinglish_phrase" (.Params.chinglish_phrase | default "")
     "chinese_meaning" (.Params.chinese_meaning | default "")
     "native_expression" (.Params.native_expression | default "")
     "category" (.Params.category | default "")
-    "tags" (.Params.tags | default slice)
-    "series" (.Params.series | default slice)
-    "date" (.Date.Format "2006-01-02")
   -}}
   {{- $result = $result | append $item -}}
 {{- end -}}

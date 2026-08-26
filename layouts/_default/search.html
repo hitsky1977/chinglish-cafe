@@ -56,13 +56,21 @@
       color: #888;
       margin-bottom: 0.5rem;
     }
-    .search-result-snippet {
+    .search-result-meaning {
       color: #444;
       line-height: 1.6;
       font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .search-result-meaning strong {
+      color: #666;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .search-highlight {
-      background-color: rgba(222, 41, 16, 0.12);
+      background-color: rgba(222, 41, 16, 0.15);
+      color: #9e1b0f;
       font-weight: 600;
       border-radius: 2px;
       padding: 0 2px;
@@ -86,13 +94,24 @@
       margin-right: 0.4rem;
       font-weight: 600;
     }
+    .match-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
   </style>
 </head>
 <body>
   {{ partial "navbar.html" . }}
 
   <main>
-    <!-- 搜索头部 -->
     <section class="hero is-small hero-pattern">
       <div class="hero-body has-text-centered py-6">
         <h1 class="title is-2 has-text-weight-bold color-coffee">
@@ -106,7 +125,6 @@
 
     <section class="section section-padding">
       <div class="container">
-        <!-- 搜索输入框 -->
         <div class="search-box">
           <input 
             type="text" 
@@ -117,8 +135,6 @@
           >
           <div class="search-stats" id="search-stats"></div>
         </div>
-
-        <!-- 搜索结果容器 -->
         <div id="search-results"></div>
       </div>
     </section>
@@ -126,7 +142,6 @@
 
   {{ partial "footer.html" . }}
 
-  <!-- Fuse.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
   
   <script>
@@ -137,35 +152,28 @@
       
       let fuse;
       let pages = [];
-      let fuseIndex;
 
-      // 1. 加载搜索索引
       fetch('/index.json')
         .then(res => res.json())
         .then(data => {
           pages = data;
           
-          // 2. 配置 Fuse.js
           const options = {
             keys: [
+              { name: 'chinglish_phrase', weight: 0.4 },
               { name: 'title', weight: 0.3 },
-              { name: 'chinglish_phrase', weight: 0.3 },
-              { name: 'chinese_meaning', weight: 0.15 },
-              { name: 'native_expression', weight: 0.15 },
-              { name: 'content', weight: 0.05 },
-              { name: 'tags', weight: 0.03 },
-              { name: 'category', weight: 0.02 }
+              { name: 'native_expression', weight: 0.2 },
+              { name: 'chinese_meaning', weight: 0.1 }
             ],
-            threshold: 0.35,
+            threshold: 0.25,
             includeScore: true,
             includeMatches: true,
-            ignoreLocation: true,
+            ignoreLocation: false,
             minMatchCharLength: 2
           };
           
           fuse = new Fuse(pages, options);
           
-          // 3. 检查 URL 是否有查询参数 ?q=xxx
           const urlParams = new URLSearchParams(window.location.search);
           const query = urlParams.get('q');
           if (query) {
@@ -178,7 +186,6 @@
           resultsContainer.innerHTML = '<div class="no-results">⚠️ Failed to load search data. Please try again later.</div>';
         });
 
-      // 4. 监听输入（防抖）
       let debounceTimer;
       searchInput.addEventListener('input', function(e) {
         clearTimeout(debounceTimer);
@@ -194,67 +201,112 @@
         }, 150);
       });
 
+      function highlightText(text, matches, keyName) {
+        if (!text || !matches || matches.length === 0) {
+          return escapeHtml(text || '');
+        }
+        const keyMatches = matches.filter(m => m.key === keyName);
+        if (keyMatches.length === 0) {
+          return escapeHtml(text);
+        }
+        let indices = [];
+        keyMatches.forEach(m => {
+          if (m.indices) indices = indices.concat(m.indices);
+        });
+        if (indices.length === 0) {
+          return escapeHtml(text);
+        }
+        indices.sort((a, b) => a[0] - b[0]);
+        const merged = [];
+        for (const [start, end] of indices) {
+          if (merged.length === 0 || start > merged[merged.length - 1][1] + 1) {
+            merged.push([start, end]);
+          } else {
+            merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], end);
+          }
+        }
+        let result = '';
+        let lastEnd = 0;
+        for (const [start, end] of merged) {
+          result += escapeHtml(text.substring(lastEnd, start));
+          result += '<mark class="search-highlight">' + escapeHtml(text.substring(start, end + 1)) + '</mark>';
+          lastEnd = end + 1;
+        }
+        result += escapeHtml(text.substring(lastEnd));
+        return result;
+      }
+
+      function getMatchLabel(matches) {
+        if (!matches) return '';
+        const keys = matches.map(m => m.key);
+        if (keys.includes('chinglish_phrase')) return '<span class="match-badge">Phrase</span>';
+        if (keys.includes('native_expression')) return '<span class="match-badge">Meaning</span>';
+        if (keys.includes('chinese_meaning')) return '<span class="match-badge">Chinese</span>';
+        return '';
+      }
+
       function performSearch(query) {
         if (!fuse) return;
         
         const results = fuse.search(query);
         
-        // 更新统计
         if (results.length > 0) {
-          statsContainer.textContent = `${results.length} result${results.length > 1 ? 's' : ''} for "${query}"`;
+          statsContainer.textContent = results.length + ' result' + (results.length > 1 ? 's' : '') + ' for "' + query + '"';
         } else {
           statsContainer.textContent = '';
         }
         
-        // 渲染结果
         if (results.length === 0) {
-          resultsContainer.innerHTML = `
-            <div class="no-results">
-              <div class="no-results-icon">😕</div>
-              <p class="is-size-5">No results found for "<strong>${escapeHtml(query)}</strong>"</p>
-              <p class="mt-2">Try searching with different keywords or check your spelling.</p>
-            </div>
-          `;
+          resultsContainer.innerHTML = 
+            '<div class="no-results">' +
+              '<div class="no-results-icon">😕</div>' +
+              '<p class="is-size-5">No results found for "<strong>' + escapeHtml(query) + '</strong>"</p>' +
+              '<p class="mt-2">Try searching with different keywords or check your spelling.</p>' +
+            '</div>';
           return;
         }
 
         const html = results.map(result => {
           const page = result.item;
-          const score = result.score;
-          
-          // 生成摘要：优先展示匹配到的片段
-          let snippet = page.summary || page.content || '';
-          if (snippet.length > 200) {
-            snippet = snippet.substring(0, 200) + '...';
+          const matches = result.matches || [];
+
+          const hlPhrase = highlightText(page.chinglish_phrase || '', matches, 'chinglish_phrase');
+          const hlTitle = highlightText(page.title || '', matches, 'title');
+          const hlNative = highlightText(page.native_expression || '', matches, 'native_expression');
+          const hlChinese = highlightText(page.chinese_meaning || '', matches, 'chinese_meaning');
+
+          const displayTitle = page.chinglish_phrase 
+            ? (hlPhrase || escapeHtml(page.chinglish_phrase))
+            : hlTitle;
+
+          let subtitle = '';
+          if (page.chinglish_phrase && page.chinglish_phrase !== page.title) {
+            subtitle = '<div style="font-size:0.9rem; color:#666; margin-top:0.2rem;">' + hlTitle + '</div>';
           }
-          
-          // 高亮显示标签
-          const tagsHtml = (page.tags && page.tags.length > 0)
-            ? page.tags.map(t => `<span class="search-tag">${escapeHtml(t)}</span>`).join('')
-            : '';
-          
+
+          let meaningLines = '';
+          if (page.chinese_meaning) {
+            meaningLines += '<div class="search-result-meaning"><strong>🇨🇳 </strong>' + (hlChinese || escapeHtml(page.chinese_meaning)) + '</div>';
+          }
+          if (page.native_expression) {
+            meaningLines += '<div class="search-result-meaning"><strong>🇺🇸 </strong>' + (hlNative || escapeHtml(page.native_expression)) + '</div>';
+          }
+
           const categoryHtml = page.category
-            ? `<span class="search-tag" style="background:#DE2910; color:#fff;">${escapeHtml(Array.isArray(page.category) ? page.category[0] : page.category)}</span>`
+            ? '<span class="search-tag" style="background:#DE2910; color:#fff;">' + escapeHtml(Array.isArray(page.category) ? page.category[0] : page.category) + '</span>'
             : '';
 
-          // 决定显示的主标题
-          const displayTitle = page.chinglish_phrase || page.title;
-          const subtitle = page.chinglish_phrase && page.chinglish_phrase !== page.title
-            ? `<div style="font-size:0.9rem; color:#666; margin-top:0.2rem;">${escapeHtml(page.title)}</div>`
-            : '';
+          const matchLabel = getMatchLabel(matches);
 
-          return `
-            <div class="search-result">
-              <div class="search-result-title">
-                <a href="${escapeHtml(page.permalink)}">${escapeHtml(displayTitle)}</a>
-              </div>
-              ${subtitle}
-              <div class="search-result-meta">
-                ${categoryHtml}${tagsHtml}
-              </div>
-              <div class="search-result-snippet">${escapeHtml(snippet)}</div>
-            </div>
-          `;
+          return '<div class="search-result">' +
+              '<div class="search-result-title">' +
+                '<a href="' + escapeHtml(page.permalink) + '">' + displayTitle + '</a>' +
+                matchLabel +
+              '</div>' +
+              subtitle +
+              '<div class="search-result-meta">' + categoryHtml + '</div>' +
+              meaningLines +
+            '</div>';
         }).join('');
 
         resultsContainer.innerHTML = html;

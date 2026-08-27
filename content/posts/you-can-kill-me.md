@@ -3,6 +3,8 @@ title: "You Can Kill Me, But You Can Not Fuck Me"
 date: 2026-08-23T10:30:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /you-can-kill-me-but-you-can-not-fuck-me/
 tags: ["Chinglish", "Wild Translation", "Legendary"]
 chinglish_phrase: "You can kill me. But you can not fuck me."
 chinese_meaning: "你可以杀了我，但你不能搞我 (Nǐ kěyǐ shā le wǒ, dàn nǐ bùnéng gǎo wǒ)"

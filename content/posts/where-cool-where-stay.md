@@ -3,6 +3,8 @@ title: "Where Cool Where You Stay"
 date: 2026-08-10T20:27:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /where-cool-where-you-stay/
 tags: ["Chinglish", "Slang", "Dismissal", "Classic"]
 chinglish_phrase: "Where cool where you stay"
 chinese_meaning: "哪凉快上哪呆着 / 哪儿凉快哪儿待着去 (nǎ liángkuài shàng nǎ dāizhe)"

@@ -3,6 +3,8 @@ title: "Self-Contradicting Spear and Shield"
 date: 2026-08-27T10:00:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /self-contradicting-spear-and-shield/
 tags: ["Chinglish", "Idiom", "Logic", "Classic"]
 chinglish_phrase: "Self-contradicting spear and shield"
 chinese_meaning: "自相矛盾 (zì xiāng máo dùn)"

@@ -5,7 +5,7 @@
 baseURL = 'https://chinglish.cafe/' 
 
 # 语言设置为美式英语，契合主要受众
-languageCode = 'en-us' 
+locale = 'en-us'
 
 # 包含核心关键词的网页标题，Google 搜索结果中显示的大字
 title = 'Chinglish.Cafe | The Ultimate Dictionary of Chinese-English Slang & Translation Fails'
@@ -20,11 +20,11 @@ disablehugogeneratorinject = true
 # ==========================================
 # 去掉 /posts/ 前缀，让所有词条 URL 保持极简 (如 /you-can-you-up/)
 [permalinks]
-  posts = "/:slug/"
-  page = "/:slug/" 
-  series = "/:slug/"
-  categories = "/:slug/"
-  articles = "/:slug/"
+  posts = "/:contentbasename/"
+  page = "/:contentbasename/"
+  series = "/:contentbasename/"
+  categories = "/:contentbasename/"
+  articles = "/:contentbasename/"
 
 # ==========================================
 # 3. 分类系统映射 (Taxonomies)

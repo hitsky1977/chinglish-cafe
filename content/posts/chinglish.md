@@ -7,6 +7,7 @@ tags: ["Chinglish", "Meta", "Culture"]
 chinglish_phrase: "Chinglish"
 chinese_meaning: "中式英语 (zhōng shì yīng yǔ)"
 native_expression: "Chinese English"
+url: "/what-is-chinglish/"
 slug: "what-is-chinglish"
 is_dictionary_added: true
 humor_index: 2

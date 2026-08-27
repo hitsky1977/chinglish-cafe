@@ -3,6 +3,8 @@ title: "Mark Boat to Find Sword"
 date: 2026-08-26T10:05:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /mark-boat-to-find-sword/
 tags: ["Chinglish", "Idiom", "Logic", "Classic"]
 chinglish_phrase: "Mark boat find sword"
 chinese_meaning: "刻舟求剑 (kè zhōu qiú jiàn)"

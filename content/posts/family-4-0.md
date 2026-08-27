@@ -3,6 +3,8 @@ title: "Family 4.0"
 date: 2026-07-25T12:10:00+08:00
 category: ["Internet Slang"]
 series: ["Chinglish"]
+aliases:
+  - /family-4.0/
 tags: ["Chinglish", "Family", "Tech Jargon"]
 chinglish_phrase: "Family 4.0"
 chinese_meaning: "四世同堂 (sì shì tóng táng)"

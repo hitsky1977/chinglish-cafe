@@ -3,6 +3,8 @@ title: "One Word Go, Jia Jia Jia"
 date: 2026-08-10T17:15:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /one-word-go-jia-jia-jia/
 tags: ["Chinglish", "Idiom", "Classic", "Onomatopoeia"]
 chinglish_phrase: "One word go, jia jia jia"
 chinese_meaning: "一言既出，驷马难追 (yī yán jì chū, sì mǎ nán zhuī)"

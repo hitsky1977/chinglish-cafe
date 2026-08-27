@@ -6,6 +6,8 @@ native_expression: "If you ignore me, I'll ignore you right back / The silent tr
 example_sentence: "Why should I text him first to apologize? You don't bird me, I don't bird you!"
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /you-dont-bird-me-i-dont-bird-you/
 tags: ["Literal Translation", "Slang", "Attitude"]
 humor_index: 5
 featured: false

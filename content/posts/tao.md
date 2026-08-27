@@ -3,6 +3,8 @@ title: "Tao / Dao"
 date: 2026-08-15T14:10:00+08:00
 category: ["Culture"]
 series: ["English from China"]
+aliases:
+  - /tao-/
 english_phrase: "Tao / Dao"
 chinese_origin: "道 (dào)"
 notability: 5

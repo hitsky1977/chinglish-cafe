@@ -3,6 +3,8 @@ title: "Baozi / Bao"
 date: 2026-08-15T14:01:00+08:00
 category: ["Culture"]
 series: ["English from China"]
+aliases:
+  - /baozi-/
 english_phrase: "Baozi / Bao"
 chinese_origin: "包子 (bāo zi)"
 notability: 4

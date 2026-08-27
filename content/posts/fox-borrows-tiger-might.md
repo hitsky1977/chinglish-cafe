@@ -3,6 +3,8 @@ title: "Fox Borrows Tiger's Might"
 date: 2026-08-25T11:02:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /fox-borrows-tigers-might/
 tags: ["Chinglish", "Idiom", "Animal", "Classic"]
 chinglish_phrase: "Fox borrows tiger's might"
 chinese_meaning: "狐假虎威 (hú jiǎ hǔ wēi)"

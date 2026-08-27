@@ -3,6 +3,8 @@ title: "Boba / Bubble Tea"
 date: 2026-08-14T17:02:00+08:00
 category: ["Culture"]
 series: ["English from China"]
+aliases:
+  - /boba-/
 english_phrase: "Boba / Bubble Tea"
 chinese_origin: "波霸奶茶 (bō bà nǎi chá)"
 notability: 5

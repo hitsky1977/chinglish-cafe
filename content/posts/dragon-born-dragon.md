@@ -3,6 +3,8 @@ title: "Dragon Born Dragon, Chicken Born Chicken, Mouse' Son Can Make Hole"
 date: 2026-08-10T20:28:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /dragon-born-dragon-chicken-born-chicken-mouse-son-can-make-hole/
 tags: ["Chinglish", "Idiom", "Classic", "Family"]
 chinglish_phrase: "Dragon born dragon, chicken born chicken, mouse' son can make hole"
 chinese_meaning: "龙生龙，凤生凤，老鼠的儿子会打洞 (lóng shēng lóng, fèng shēng fèng, lǎo shǔ de ér zi huì dǎ dòng)"

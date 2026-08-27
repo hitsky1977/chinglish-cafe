@@ -3,6 +3,8 @@ title: "You Dida-dida Me, I Huala-huala You"
 date: 2026-07-25T11:55:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /you-dida-dida-me-i-huala-huala-you/
 tags: ["Chinglish", "Proverb", "Internet Slang"]
 chinglish_phrase: "You dida-dida me, I huala-huala you"
 chinese_meaning: "滴水之恩，当涌泉相报 (dī shuǐ zhī ēn, dāng yǒng quán xiāng bào)"

@@ -3,6 +3,8 @@ title: "0.5 Yes 0.5 No"
 date: 2026-08-10T17:05:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /0.5-yes-0.5-no/
 tags: ["Chinglish", "Math", "Skepticism", "Internet Slang"]
 chinglish_phrase: "0.5 yes 0.5 no"
 chinese_meaning: "半信半疑 (bàn xìn bàn yí)"

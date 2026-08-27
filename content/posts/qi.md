@@ -3,6 +3,8 @@ title: "Qi / Chi"
 date: 2026-08-15T14:11:00+08:00
 category: ["Culture"]
 series: ["English from China"]
+aliases:
+  - /qi-/
 english_phrase: "Qi / Chi"
 chinese_origin: "气 (qì)"
 notability: 4

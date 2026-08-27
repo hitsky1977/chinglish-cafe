@@ -3,6 +3,8 @@ title: "Qi People Worry About Sky"
 date: 2026-08-27T10:01:00+08:00
 category: ["Idioms & Slang"]
 series: ["Chinglish"]
+aliases:
+  - /qi-people-worry-about-sky/
 tags: ["Chinglish", "Idiom", "Anxiety", "Classic"]
 chinglish_phrase: "Qi people worry about sky"
 chinese_meaning: "杞人忧天 (Qǐ rén yōu tiān)"

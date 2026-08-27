@@ -8,7 +8,7 @@ chinglish_phrase: "Mark boat find sword"
 chinese_meaning: "刻舟求剑 (kè zhōu qiú jiàn)"
 native_expression: "Rigid thinking / Refusing to adapt / Following a plan that no longer applies"
 is_dictionary_added: false
-humor_index: 5
+humor_index: 4
 example_sentence: "He's still using a 2015 marketing playbook in the TikTok era. Total mark boat find sword."
 ---
 

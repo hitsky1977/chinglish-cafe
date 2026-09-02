@@ -89,10 +89,15 @@
                         {{ end }}
                     </div>
 
-                    {{ $coverImage := .Params.image | default "/images/default-cover.webp" }}
-                    <figure class="image mb-6">
-                        <img src="{{ $coverImage }}" alt="{{ .Title }}" width="800" height="450" fetchpriority="high"  style="border-radius: 8px; object-fit: cover; max-height: 450px; width: 100%;">
-                    </figure>
+                  <!-- 🌟 智能图片展示：只有当文章真实存在专属配图时，才在页面展示图片 -->
+{{ if .Params.image }}
+<figure class="image mb-6">
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" width="800" height="450" fetchpriority="high" style="border-radius: 8px; object-fit: cover; max-height: 450px; width: 100%;">
+</figure>
+{{ else }}
+<!-- 如果没有专属配图，为了排版美观，增加一个适度的空白间距，直接过渡到正文 -->
+<div class="mb-5"></div>
+{{ end }}
 
                     <div class="content">
                         {{ .Content }}

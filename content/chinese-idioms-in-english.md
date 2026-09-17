@@ -33,17 +33,17 @@ This is not "bad translation." This is **Chinglish at its most artistic** — th
 | Chinese | Literal Translation | Actual Meaning |
 |---------|---------------------|----------------|
 | 吃醋 | [Eat Vinegar](/eat-vinegar/) | Romantic jealousy |
-| 拍马屁 | Pat Horse Butt | Flattery / Brown-nosing |
+| 拍马屁 | [Pat Horse Butt](/pat-horse-butt/) | Flattery / Brown-nosing |
 | 穿小鞋 | [Wear Small Shoes](/wear-small-shoes/) | Passive-aggressive revenge by authority |
 
 ## Daily Life
 
 | Chinese | Literal Translation | Actual Meaning |
 |---------|---------------------|----------------|
-| 碰钉子 | Hit Nail | Run into obstacles / Be rejected |
-| 打草惊蛇 | Beat Grass Startle Snake | Alert the enemy by accident |
-| 杀鸡取卵 | Kill Chicken Take Egg | Destroy the source for short-term gain |
-| 亡羊补牢 | Mend Pen After Sheep Lost | Fixing a problem after it happens |
+| 碰钉子 | [Hit Nail](/hit-nail/) | Run into obstacles / Be rejected |
+| 打草惊蛇 | [Beat Grass Startle Snake](/beat-grass-startle-snake/) | Alert the enemy by accident |
+| 杀鸡取卵 | [Kill Chicken Take Egg](/kill-chicken-take-egg/) | Destroy the source for short-term gain |
+| 亡羊补牢 | [Mend Pen After Sheep Lost](/mend-pen-after-sheep-lost/) | Fixing a problem after it happens |
 
 ## Emotions & States of Mind
 
@@ -58,14 +58,14 @@ This is not "bad translation." This is **Chinglish at its most artistic** — th
 
 The following idioms now have their own full dictionary entries:
 
-| Chinese | Literal Translation |
-|---------|---------------------|
-| 雪中送炭 | [Send Charcoal in Snow](/send-charcoal-in-snow/) |
-| 望梅止渴 | [Gaze at Plums to Quench Thirst](/gaze-at-plums-to-quench-thirst/) |
-| 刻舟求剑 | [Mark Boat Find Sword](/mark-boat-find-sword/) |
-| 自相矛盾 | [Self-Contradicting Spear and Shield](/self-contradicting-spear-shield/) |
-| 叶公好龙 | [Lord Ye Loves Dragons](/lord-ye-loves-dragons/) |
-| 杞人忧天 | [Qi People Worry Sky](/qi-people-worry-sky/) |
+| Chinese | Literal Translation | Actual Meaning |
+|---------|---------------------|----------------|
+| 雪中送炭 | [Send Charcoal in Snow](/send-charcoal-in-snow/) | Timely help in a moment of crisis |
+| 望梅止渴 | [Gaze at Plums to Quench Thirst](/gaze-at-plums-to-quench-thirst/) | Consoling oneself with illusions |
+| 刻舟求剑 | [Mark Boat Find Sword](/mark-boat-find-sword/) | Clinging to old methods when conditions have changed |
+| 自相矛盾 | [Self-Contradicting Spear and Shield](/self-contradicting-spear-shield/) | Contradicting oneself |
+| 叶公好龙 | [Lord Ye Loves Dragons](/lord-ye-loves-dragons/) | Professed love for something one fears |
+| 杞人忧天 | [Qi People Worry Sky](/qi-people-worry-sky/) | Paranoia over imaginary threats |
 
 ---
 

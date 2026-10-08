@@ -6,8 +6,17 @@
                 <img src="/images/papercut.png" alt="Chinglish Cafe Emblem" class="logo-icon-dot-nav">
                 <span class="color-coffee">Cafe</span>
             </a>
+            
+            <!-- 🌟 移动端汉堡折叠按钮 -->
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="navbar-menu is-active" style="box-shadow: none;">
+        
+        <!-- 🌟 去掉 is-active，增加 id="navbarMenu" 供 JS 绑定 -->
+        <div id="navbarMenu" class="navbar-menu" style="box-shadow: none;">
             <div class="navbar-end">
                 <a href="/" class="navbar-item has-text-grey has-text-weight-semibold">
                     &larr; Home

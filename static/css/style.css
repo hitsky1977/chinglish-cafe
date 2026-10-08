@@ -21,8 +21,9 @@ body {
 .color-cn-red { color: #DE2910; } 
 .color-coffee { color: #5C4033; } 
 
- .navbar-brand > a {
+.navbar-brand > a.navbar-item {
     display: inline-flex;
+    align-items: center; /* 顺便确保文字和图标垂直居中对齐 */
     gap: 0;
 }
 /* ==========================================================================
@@ -92,3 +93,12 @@ body {
 }
 .breadcrumb a { color: #5C4033; }
 .breadcrumb li.is-active a { color: #999; cursor: default; }
+/* 将移动端汉堡菜单的线条颜色修改为“Cafe”同款咖啡色 */
+.navbar-burger {
+    color: #5C4033;
+}
+
+/* 确保不管在什么状态下，线条背景色都是咖啡色 */
+.navbar-burger span {
+    background-color: #5C4033 !important;
+}

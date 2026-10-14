@@ -1,0 +1,40 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}
+  {{- $pctx = .Site -}}
+{{- end -}}
+{{- /* 通用逻辑：自动读取 Hugo 主内容区（mainSections），避免把 about / privacy 等单页混入 */ -}}
+{{- $mainSections := .Site.Params.mainSections | default (slice "posts" "post" "articles" "blog" "news") -}}
+{{- $pages := where .Site.RegularPages "Section" "in" $mainSections -}}
+{{- /* 如果没有匹配到 mainSections，则默认抓取所有带有 section 的常规文章 */ -}}
+{{- if not $pages -}}
+  {{- $pages = where .Site.RegularPages "Section" "ne" "" -}}
+{{- end -}}
+{{- /* 限制最大输出条目数（默认 30 条，可在 hugo.toml 中重写） */ -}}
+{{- $limit := .Site.Config.Services.RSS.Limit | default 30 -}}
+{{- $pages = first $limit $pages -}}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Recent content {{ if ne .Title .Site.Title }}in {{ .Title }} {{ end }}on {{ .Site.Title }}</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>{{ site.Language.LanguageCode | default "en" }}</language>
+    {{ with .Site.Copyright }}<copyright>{{ . }}</copyright>{{ end }}
+    {{ if not .Date.IsZero }}<lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    {{ with .OutputFormats.Get "RSS" }}
+      {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range $pages }}
+    {{- /* 安全校验：彻底剔除未配置日期的文章，防止输出 0001 年异常数据 */ -}}
+    {{- if not .Date.IsZero -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | html }}</description>
+    </item>
+    {{- end -}}
+    {{ end }}
+  </channel>
+</rss>

@@ -10,8 +10,7 @@ locale = 'en-us'
 # 包含核心关键词的网页标题，Google 搜索结果中显示的大字
 title = 'Chinglish.Cafe | The Ultimate Dictionary of Chinese-English Slang & Translation Fails'
 
-
-# 🌟 新增：开启搜索引擎爬虫协议文件自动生成
+# 开启搜索引擎爬虫协议文件自动生成
 enableRobotsTXT = true
 disablehugogeneratorinject = true
 
@@ -54,11 +53,11 @@ disablehugogeneratorinject = true
   # 网站作者或运营者信息
   author = "Chinglish Cafe Team"
   
-  # 🌟 修正：默认的社交分享预览图 (匹配你 static/images/ 里的真实文件名)
+  # 默认的社交分享预览图 (匹配你 static/images/ 里的真实文件名)
   defaultSocialImage = "/images/default-cover.webp"
 
 # ==========================================
-# 6. 输出格式配置（Fuse.js 搜索索引）
+# 6. 输出格式配置（Fuse.js 搜索索引与 RSS）
 # ==========================================
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -68,5 +67,18 @@ disablehugogeneratorinject = true
   baseName = "index"
   isPlainText = true
 
+# ==========================================
+# 7. Front Matter 日期自动兜底策略
+# ==========================================
+# 优先读取 Markdown 的 date，若没有则抓取文件修改时间 (:fileModTime)
+[frontmatter]
+  date = ["date", "publishDate", "lastmod", ":fileModTime"]
+
+# ==========================================
+# 8. 第三方与系统服务配置 (Analytics & RSS)
+# ==========================================
 [services.googleAnalytics]
-ID = 'G-CVGWS33EFZ'   # 你的 GA4 衡量 ID
+  ID = 'G-CVGWS33EFZ'   # GA4 衡量 ID
+
+[services.rss]
+  limit = 30            # RSS 订阅源限制输出最新的 30 条文章
